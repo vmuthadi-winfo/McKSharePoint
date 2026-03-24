@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRx Platform | Security</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ─── Top Navigation ─────────────────────────────────────────────────── -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-logo">MRx</div>
+      <div>
+        <span class="nav-brand-text">MRx Platform</span>
+        <span class="nav-brand-sub">McKinsey Internal</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="data-ai.html">📊 Data &amp; AI</a></li>
+      <li><a href="infrastructure-devops.html">⚙️ Infrastructure &amp; DevOps</a></li>
+      <li><a href="security.html" class="active">🔒 Security</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ─── Breadcrumb ──────────────────────────────────────────────────────── -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">MRx Platform</a>
+    <span class="sep">›</span>
+    <strong>Security</strong>
+  </div>
+</div>
+
+<!-- ─── Hero ────────────────────────────────────────────────────────────── -->
+<section class="page-hero" style="background:linear-gradient(135deg,#1a0505 0%,#7b1111 55%,#b71c1c 100%);">
+  <div class="page-hero-inner">
+    <div class="hero-badge" style="background:rgba(255,100,100,0.2);border-color:rgba(255,100,100,0.4);color:#ffaaaa;">Security &amp; Compliance</div>
+    <h1>Security &amp; Compliance Framework</h1>
+    <p>Comprehensive vulnerability management, cloud security posture monitoring, code security scanning, and real-time alerting for compromised data — protecting the MRx platform from threats at every layer.</p>
+  </div>
+</section>
+
+<!-- ─── Page Sub-Navigation ─────────────────────────────────────────────── -->
+<div style="background:var(--white);border-bottom:1px solid var(--mckinsey-border);position:sticky;top:65px;z-index:900;">
+  <div class="page-tabs" style="max-width:1400px;margin:0 auto;">
+    <a href="#overview"       class="page-tab">Security Overview</a>
+    <a href="#vulnerability"  class="page-tab">Vulnerability Management</a>
+    <a href="#wiz"            class="page-tab">Wiz Cloud Security</a>
+    <a href="#github-sec"     class="page-tab">GitHub Security</a>
+    <a href="#monitoring"     class="page-tab">Monitoring &amp; Alerting</a>
+  </div>
+</div>
+
+<!-- ─── Main Content ────────────────────────────────────────────────────── -->
+<main class="page-content">
+
+  <!-- Security Overview ────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="overview">
+    <div class="section-title">
+      <span class="icon icon-red">🛡️</span>
+      Security Overview
+    </div>
+    <div class="section-subtitle">Defence-in-depth security architecture protecting the MRx platform at every layer</div>
+
+    <div class="info-box" style="background:#fdecea;border-color:#b71c1c;color:#6b0000;margin-bottom:20px;">
+      <strong>Security Posture</strong>
+      MRx operates a zero-trust, defence-in-depth security model. Security controls are enforced at the network, identity, data, application, and CI/CD pipeline layers — ensuring that compromise at any single layer does not result in data exfiltration or platform disruption.
+    </div>
+
+    <div class="grid-4" style="margin-bottom:24px;">
+      <div class="stat-card" style="border-top:4px solid #b71c1c;">
+        <div class="stat-value" style="color:#b71c1c;">Zero Trust</div>
+        <div class="stat-label">Identity &amp; Network Access Model</div>
+      </div>
+      <div class="stat-card" style="border-top:4px solid var(--mckinsey-orange);">
+        <div class="stat-value" style="color:var(--mckinsey-orange);">Shift Left</div>
+        <div class="stat-label">Security integrated at PR &amp; commit time</div>
+      </div>
+      <div class="stat-card" style="border-top:4px solid var(--mckinsey-teal);">
+        <div class="stat-value" style="color:var(--mckinsey-teal);">24 / 7</div>
+        <div class="stat-label">Continuous cloud security posture monitoring</div>
+      </div>
+      <div class="stat-card" style="border-top:4px solid var(--mckinsey-blue);">
+        <div class="stat-value" style="color:var(--mckinsey-blue);">SOX / SOC</div>
+        <div class="stat-label">Compliance controls &amp; audit evidence</div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-red">🔐</div>
+          <div class="card-title">Identity &amp; Access Control</div>
+        </div>
+        <ul class="styled-list">
+          <li><strong>Azure Active Directory (Entra ID)</strong> — centralised identity provider for all MRx services</li>
+          <li>Managed Identity (MSI) for all service-to-service authentication — no stored credentials</li>
+          <li>Role-Based Access Control (RBAC) enforced at Azure resource level</li>
+          <li>Databricks Unity Catalog — row/column-level security for data access</li>
+          <li>Privileged Identity Management (PIM) — just-in-time elevated access</li>
+          <li>Quarterly access reviews — stale permissions removed automatically</li>
+          <li>Multi-Factor Authentication (MFA) mandatory for all human accounts</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Entra ID</span><span class="tag tag-red">PIM</span><span class="tag tag-teal">RBAC</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-orange">🌐</div>
+          <div class="card-title">Network Security</div>
+        </div>
+        <ul class="styled-list">
+          <li>All Databricks workspaces deployed in <strong>VNet injection</strong> (no public egress)</li>
+          <li>Private endpoints for ADLS Gen2, Key Vault, Azure Container Registry</li>
+          <li>Network Security Groups (NSG) with deny-all default + explicit allow rules</li>
+          <li>Azure Firewall with FQDN-based outbound allowlisting</li>
+          <li>No public IP addresses on data compute nodes</li>
+          <li>DDoS Protection Standard enabled on production virtual networks</li>
+          <li>Network traffic flow logs captured to Log Analytics for forensic investigation</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">VNet</span><span class="tag tag-red">Private Endpoints</span><span class="tag tag-blue">NSG</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-teal">🗝️</div>
+          <div class="card-title">Secrets &amp; Key Management</div>
+        </div>
+        <ul class="styled-list">
+          <li><strong>Azure Key Vault</strong> — centralised secret, key, and certificate management</li>
+          <li>Databricks Secret Scopes backed by Key Vault — no secrets in notebooks or code</li>
+          <li>Key rotation policy: credentials rotated every 90 days automatically</li>
+          <li>Key Vault access restricted to MSI only — no key vault access policies for humans</li>
+          <li>Soft-delete and purge protection enabled on all production Key Vaults</li>
+          <li>Certificate expiry monitoring: alerts raised 30 days before expiration</li>
+          <li>GitHub Secrets for CI/CD credentials — never hardcoded in workflow files</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Key Vault</span><span class="tag tag-green">Rotation</span><span class="tag tag-blue">Secrets Scope</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Vulnerability Management ─────────────────────────────────────────── -->
+  <section class="section-anchor" id="vulnerability">
+    <div class="section-title">
+      <span class="icon icon-orange">🔎</span>
+      Vulnerability Management
+    </div>
+    <div class="section-subtitle">Panorama integration and systematic vulnerability tracking, triage, and remediation</div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-orange">📡</div>
+          <div class="card-title">Panorama Integration</div>
+        </div>
+        <p class="card-desc" style="margin-bottom:12px;">MRx vulnerability findings are centrally managed through the McKinsey <strong>Panorama</strong> vulnerability management platform:</p>
+        <ul class="styled-list">
+          <li>Wiz and GitHub Security findings auto-ingested into Panorama via API connectors</li>
+          <li>Findings deduplicated and correlated across multiple scanners in Panorama</li>
+          <li>CVE enrichment: CVSS scores, exploit availability, and asset criticality weighting</li>
+          <li>Risk-based prioritisation: findings ranked by exploitability × asset sensitivity</li>
+          <li>Panorama ticket auto-assigned to the responsible engineering team</li>
+          <li>SLA tracking: Critical (5 days), High (30 days), Medium (90 days)</li>
+          <li>Metrics dashboard: open findings by severity, age, and team ownership</li>
+          <li>Monthly vulnerability posture report distributed to Tech Lead and CISO</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Panorama</span><span class="tag tag-red">CVE</span><span class="tag tag-blue">Risk-Based</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-red">🚨</div>
+          <div class="card-title">Vulnerability SLA &amp; Remediation Process</div>
+        </div>
+        <table class="data-table" style="font-size:13px;margin-bottom:14px;">
+          <thead>
+            <tr><th>Severity</th><th>Max Age</th><th>Escalation Path</th><th>Review</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="tag tag-red">Critical</span></td><td>5 days</td><td>Immediate CISO notification</td><td>Daily</td></tr>
+            <tr><td><span class="tag tag-orange">High</span></td><td>30 days</td><td>Tech Lead + Security team</td><td>Weekly</td></tr>
+            <tr><td><span class="tag tag-blue">Medium</span></td><td>90 days</td><td>Team backlog</td><td>Monthly</td></tr>
+            <tr><td><span class="tag tag-gray">Low</span></td><td>180 days</td><td>Quarterly review</td><td>Quarterly</td></tr>
+          </tbody>
+        </table>
+        <ul class="styled-list">
+          <li>Breached SLAs trigger automatic Jira escalation ticket with P1 priority</li>
+          <li>Accepted risk process: documented exception with expiry date and CISO sign-off</li>
+          <li>Remediation verification: re-scan required after fix to confirm closure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Wiz Cloud Security ───────────────────────────────────────────────── -->
+  <section class="section-anchor" id="wiz">
+    <div class="section-title">
+      <span class="icon icon-red">☁️</span>
+      Wiz Cloud Security Monitoring
+    </div>
+    <div class="section-subtitle">Cloud Security Posture Management (CSPM) and Cloud Workload Protection (CWPP) via Wiz</div>
+
+    <div class="info-box" style="background:#fdecea;border-color:#b71c1c;color:#6b0000;margin-bottom:20px;">
+      <strong>Wiz Deployment Scope</strong>
+      Wiz is deployed across all MRx Azure subscriptions with agentless scanning. It continuously assesses the security posture of every Azure resource, container image, and Kubernetes workload — providing a real-time risk graph of the entire MRx platform.
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-red">🔭</div>
+          <div class="card-title">Wiz CSPM — Cloud Security Posture</div>
+        </div>
+        <ul class="styled-list">
+          <li><strong>Continuous misconfiguration scanning</strong> across all Azure resources (storage, network, identity)</li>
+          <li>Checks against CIS Azure Benchmarks, NIST CSF, and McKinsey internal security policy</li>
+          <li>Publicly exposed storage accounts or VMs → Critical finding, immediate alert</li>
+          <li>Overly permissive IAM roles detected and flagged for remediation</li>
+          <li>Encryption-at-rest compliance: unencrypted disks flagged as High severity</li>
+          <li>MFA enforcement check on all human identity accounts</li>
+          <li>Wiz Security Graph: visual risk path from internet-exposed resource to sensitive data</li>
+          <li>New resources scanned within minutes of provisioning</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">CSPM</span><span class="tag tag-orange">CIS Benchmark</span><span class="tag tag-blue">Wiz</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon" style="background:#fcd6d6;">🐳</div>
+          <div class="card-title">Wiz CWPP — Workload Protection</div>
+        </div>
+        <ul class="styled-list">
+          <li><strong>Container image scanning</strong> in Azure Container Registry — vulnerabilities detected before deployment</li>
+          <li>Kubernetes (AKS) workload assessment: pod security, privileged containers, host path mounts</li>
+          <li>OS vulnerability scanning: known CVEs in cluster node operating systems</li>
+          <li>Runtime threat detection: anomalous process execution, suspicious network calls</li>
+          <li>Databricks cluster node vulnerability assessment via Wiz agentless scan</li>
+          <li>Secrets in environment variables or container filesystems detected and alerted</li>
+          <li>Software Bill of Materials (SBOM) generated for all deployed container images</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">CWPP</span><span class="tag tag-orange">Container Scan</span><span class="tag tag-teal">SBOM</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-orange">🔗</div>
+          <div class="card-title">Wiz Integration Architecture</div>
+        </div>
+        <ul class="styled-list">
+          <li>Wiz connected to all MRx Azure subscriptions via read-only service principal</li>
+          <li>Findings exported to Panorama via Wiz API → Panorama connector (every 4 hours)</li>
+          <li>Critical findings trigger immediate PagerDuty alert to Security team on-call</li>
+          <li>Wiz findings linked to Jira tickets automatically for remediation tracking</li>
+          <li>Wiz admission controller (optional) blocks non-compliant resources from creation</li>
+          <li>Compliance reports generated from Wiz for SOC 2 and ISO 27001 evidence</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Panorama</span><span class="tag tag-red">PagerDuty</span><span class="tag tag-blue">Jira</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-blue">📋</div>
+          <div class="card-title">Wiz Policies &amp; Rules</div>
+        </div>
+        <ul class="styled-list">
+          <li>Built-in Wiz rules supplemented with <strong>custom MRx rules</strong> for McKinsey-specific controls</li>
+          <li>Custom rule: storage accounts must have public access disabled</li>
+          <li>Custom rule: Databricks clusters must not use public IP (NPIP enforcement)</li>
+          <li>Custom rule: Key Vault must have soft-delete and purge protection enabled</li>
+          <li>Custom rule: all resources must have mandatory tags (CostCenter, Owner, Environment)</li>
+          <li>Rule changes go through PR review before activation in Wiz</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Custom Rules</span><span class="tag tag-teal">Policy as Code</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- GitHub Security ──────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="github-sec">
+    <div class="section-title">
+      <span class="icon" style="background:#f0e8ff;">🔍</span>
+      GitHub Security Scanner
+    </div>
+    <div class="section-subtitle">GitHub Advanced Security — secret scanning, code scanning (SAST), and dependency review</div>
+
+    <div class="info-box" style="background:#f2eeff;border-color:#5e35b1;color:#2d1b69;margin-bottom:20px;">
+      <strong>GitHub Advanced Security (GHAS)</strong>
+      All MRx repositories have GitHub Advanced Security enabled. GHAS provides three core security capabilities integrated directly into the developer workflow: secret scanning (prevents credential leakage), code scanning / CodeQL SAST (detects vulnerabilities at commit time), and dependency review (blocks vulnerable package additions).
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-red">🔑</div>
+          <div class="card-title">Secret Scanning</div>
+        </div>
+        <ul class="styled-list">
+          <li>GitHub Secret Scanning enabled on all MRx repositories (push and historical scan)</li>
+          <li>Detects: API keys, connection strings, certificates, Azure SAS tokens, PATs, OAuth tokens</li>
+          <li>Custom patterns configured for McKinsey-specific credential formats</li>
+          <li><strong>Push protection:</strong> blocks commits containing detected secrets before they reach the repository</li>
+          <li>Secret alerts routed to Security team inbox in addition to repository owner</li>
+          <li>Detected secrets are treated as compromised and rotated within 1 hour (P1 response)</li>
+          <li>False positive bypass requires written justification and Security team approval</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">Secret Scanning</span><span class="tag tag-orange">Push Protection</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-purple">🔬</div>
+          <div class="card-title">Code Scanning (CodeQL SAST)</div>
+        </div>
+        <ul class="styled-list">
+          <li>CodeQL static analysis scans all MRx repositories on every PR and push to <code>main</code></li>
+          <li>Languages covered: Python, JavaScript/TypeScript, SQL (HCL via 3rd-party action)</li>
+          <li>Detects: SQL injection, XSS, path traversal, insecure deserialization, SSRF</li>
+          <li>Custom CodeQL queries written for MRx-specific security anti-patterns</li>
+          <li><strong>Required status check:</strong> CodeQL must pass before PR can be merged</li>
+          <li>Code scanning alerts exported to Panorama via GitHub API connector</li>
+          <li>Severity-based merge blocking: Critical and High alerts block merge</li>
+        </ul>
+        <div class="tags"><span class="tag tag-purple">CodeQL</span><span class="tag tag-blue">SAST</span><span class="tag tag-orange">Required Check</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-teal">📦</div>
+          <div class="card-title">Dependency Review &amp; Dependabot</div>
+        </div>
+        <ul class="styled-list">
+          <li><strong>Dependency Review Action</strong> runs on every PR — blocks merging of vulnerable packages</li>
+          <li>Checks for known CVEs in: Python (pip), Node.js (npm), Terraform (Hashicorp), Docker base images</li>
+          <li><strong>Dependabot:</strong> automated PRs to update vulnerable dependencies within 24 hours</li>
+          <li>Dependabot security updates auto-merged if CI passes and CVSS &lt; 7.0</li>
+          <li>High/Critical Dependabot alerts assigned to on-call engineer for expedited review</li>
+          <li>Software Composition Analysis (SCA) reports included in monthly security dashboard</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Dependabot</span><span class="tag tag-green">SCA</span><span class="tag tag-blue">Dep Review</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-blue">⚙️</div>
+          <div class="card-title">Security in CICD Pipeline</div>
+        </div>
+        <ul class="styled-list">
+          <li>Security scanning jobs run in parallel to test jobs — no pipeline duration impact</li>
+          <li>GHAS results surfaced inline in PR diff view for developer awareness</li>
+          <li>Required status check prevents merge of PRs with unaddressed Critical/High findings</li>
+          <li>Security scan results cached; only changed files rescanned for speed</li>
+          <li>Terraform security scanning via <code>tfsec</code> / <code>checkov</code> in IaC PR pipeline</li>
+          <li>Container image scanning via <code>trivy</code> action before ACR push</li>
+          <li>OWASP dependency check integrated for Java components (if applicable)</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">tfsec</span><span class="tag tag-teal">trivy</span><span class="tag tag-green">checkov</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-green">📊</div>
+          <div class="card-title">Security Metrics &amp; Reporting</div>
+        </div>
+        <ul class="styled-list">
+          <li>GitHub Security Overview dashboard: alerts by severity, repo, and alert age</li>
+          <li>Weekly security summary email to Tech Leads: new alerts, SLA breaches, closures</li>
+          <li>GHAS metrics exported to Grafana Security Dashboard via GitHub API</li>
+          <li><strong>KPIs tracked:</strong> Mean Time to Detect (MTTD), Mean Time to Remediate (MTTR)</li>
+          <li>Security debt tracked as Jira epics — addressed in quarterly security sprints</li>
+          <li>Compliance evidence: GHAS scan history retained and exportable for audit</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">Metrics</span><span class="tag tag-blue">Grafana</span><span class="tag tag-orange">MTTD/MTTR</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Monitoring & Alerting ────────────────────────────────────────────── -->
+  <section class="section-anchor" id="monitoring">
+    <div class="section-title">
+      <span class="icon icon-orange">🔔</span>
+      Monitoring &amp; Alerting for Compromised Data
+    </div>
+    <div class="section-subtitle">Detection, response, and containment processes for data security incidents</div>
+
+    <div class="info-box orange" style="margin-bottom:20px;">
+      <strong>Data Security Incident Response</strong>
+      MRx maintains a dedicated Data Security Incident Response Plan (DSIRP) covering detection of data exfiltration, unauthorised access, and data compromise events. The plan integrates with McKinsey's enterprise Security Operations Centre (SOC) for co-ordinated response.
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-red">👁️</div>
+          <div class="card-title">Data Exfiltration Detection</div>
+        </div>
+        <ul class="styled-list">
+          <li><strong>Azure Defender for Storage:</strong> anomalous access pattern detection (volume, geo, time)</li>
+          <li>Unity Catalog audit logs: all data access events logged to Log Analytics</li>
+          <li>Databricks IP access lists: connections from unexpected IPs trigger alert</li>
+          <li><strong>DLP (Data Loss Prevention):</strong> Sensitive data classification via Azure Purview / Microsoft Purview</li>
+          <li>Outbound data transfer volume monitoring: alert on bulk export exceeding threshold</li>
+          <li>Unusual service principal access patterns detected via Azure Sentinel analytics rules</li>
+          <li>Azure Sentinel UEBA (User Entity Behaviour Analytics) detects insider threat patterns</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">Azure Sentinel</span><span class="tag tag-orange">DLP</span><span class="tag tag-blue">UEBA</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon" style="background:#fdecea;">🚨</div>
+          <div class="card-title">Security Alerting &amp; Escalation</div>
+        </div>
+        <ul class="styled-list">
+          <li>Azure Sentinel SIEM: centralised security alert correlation and triage</li>
+          <li>Analytic rules: 50+ custom rules tuned for MRx-specific threat scenarios</li>
+          <li>Alert severity mapping: Informational → Low → Medium → High → Critical</li>
+          <li><strong>P1 Security Alerts:</strong> immediate PagerDuty page to Security on-call + Platform Lead</li>
+          <li>Automated playbooks (Azure Logic Apps): IP block, token revocation, cluster suspension</li>
+          <li>Escalation to McKinsey SOC for confirmed data breach events within 15 minutes</li>
+          <li>GDPR / CCPA notification obligations tracked: 72-hour breach notification window</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">Sentinel</span><span class="tag tag-orange">Playbooks</span><span class="tag tag-blue">SOC</span></div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-teal">📋</div>
+          <div class="card-title">Security Incident Response Playbooks</div>
+        </div>
+        <table class="data-table" style="font-size:13px;">
+          <thead>
+            <tr><th>Scenario</th><th>Response Time</th><th>Owner</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Credential compromise</td><td>1 hour contain</td><td>Security + Platform</td></tr>
+            <tr><td>Data exfiltration attempt</td><td>15 min isolate</td><td>SOC + CISO</td></tr>
+            <tr><td>Ransomware detection</td><td>Immediate isolate</td><td>SOC + CISO</td></tr>
+            <tr><td>Unauthorised data access</td><td>1 hour revoke</td><td>Security + Data Governance</td></tr>
+            <tr><td>Secret leaked in code</td><td>1 hour rotate</td><td>Engineer + Security</td></tr>
+            <tr><td>Container compromise</td><td>Immediate evict</td><td>Platform + Security</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-blue">🔍</div>
+          <div class="card-title">Forensic Investigation Capabilities</div>
+        </div>
+        <ul class="styled-list">
+          <li>All authentication and data access events logged in Azure Log Analytics (12-month retention)</li>
+          <li>Databricks cluster event logs retained for forensic investigation</li>
+          <li>Network flow logs enable reconstruction of suspicious traffic paths</li>
+          <li>Immutable audit trail for all production data modifications</li>
+          <li>Key Vault access logs: who accessed which secret, when, from which IP</li>
+          <li>Legal hold capability: logs can be exported and locked for litigation support</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Forensics</span><span class="tag tag-teal">Log Analytics</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-green">🧪</div>
+          <div class="card-title">Security Testing &amp; Red Team</div>
+        </div>
+        <ul class="styled-list">
+          <li>Annual penetration testing by approved external security firm</li>
+          <li>Quarterly internal red team exercises targeting MRx attack surface</li>
+          <li>Threat modelling conducted for all new services (STRIDE methodology)</li>
+          <li>Chaos engineering: simulated failure scenarios including security events</li>
+          <li>Security control effectiveness reviews bi-annually</li>
+          <li>Bug bounty programme participation for critical data platform components</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">Pen Testing</span><span class="tag tag-orange">STRIDE</span><span class="tag tag-blue">Red Team</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-purple">📊</div>
+          <div class="card-title">Security KPIs &amp; Metrics</div>
+        </div>
+        <table class="data-table" style="font-size:13px;">
+          <thead>
+            <tr><th>Metric</th><th>Target</th><th>Measured</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Critical vuln remediation</td><td>100% within 5 days</td><td>Weekly</td></tr>
+            <tr><td>High vuln remediation</td><td>95% within 30 days</td><td>Monthly</td></tr>
+            <tr><td>Secret scan coverage</td><td>100% of repos</td><td>Continuous</td></tr>
+            <tr><td>CSPM risk score (Wiz)</td><td>&lt; 200 (target)</td><td>Daily</td></tr>
+            <tr><td>Security alert MTTR (P1)</td><td>&lt; 2 hours</td><td>Per incident</td></tr>
+            <tr><td>MFA adoption rate</td><td>100%</td><td>Monthly</td></tr>
+            <tr><td>Access review completion</td><td>100% quarterly</td><td>Quarterly</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-orange">📅</div>
+          <div class="card-title">Security Review Calendar</div>
+        </div>
+        <table class="data-table" style="font-size:13px;">
+          <thead>
+            <tr><th>Activity</th><th>Cadence</th><th>Owner</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Vulnerability posture review</td><td>Monthly</td><td>Security Lead</td></tr>
+            <tr><td>Access rights review</td><td>Quarterly</td><td>Platform Lead</td></tr>
+            <tr><td>Penetration test</td><td>Annual</td><td>CISO / External firm</td></tr>
+            <tr><td>Threat modelling</td><td>Per new service</td><td>Security Architect</td></tr>
+            <tr><td>SOC 2 evidence collection</td><td>Quarterly</td><td>GRC Team</td></tr>
+            <tr><td>DR / IR drill</td><td>Semi-annual</td><td>Platform + Security</td></tr>
+            <tr><td>Security control review</td><td>Semi-annual</td><td>Security Architect</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <strong>MRx Platform</strong> &mdash; McKinsey Internal Knowledge Portal &mdash; Security &amp; Compliance &mdash; 2024
+</footer>
+
+<script>
+  var sections = document.querySelectorAll('.section-anchor');
+  var tabs = document.querySelectorAll('.page-tab');
+  window.addEventListener('scroll', function() {
+    var scrollPos = window.scrollY + 140;
+    sections.forEach(function(section) {
+      if (section.offsetTop <= scrollPos && section.offsetTop + section.offsetHeight > scrollPos) {
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        var activeTab = document.querySelector('.page-tab[href="#' + section.getAttribute('id') + '"]');
+        if (activeTab) activeTab.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

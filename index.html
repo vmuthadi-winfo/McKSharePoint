@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRx Platform | Home</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ─── Top Navigation ─────────────────────────────────────────────────── -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-logo">MRx</div>
+      <div>
+        <span class="nav-brand-text">MRx Platform</span>
+        <span class="nav-brand-sub">McKinsey Internal</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">🏠 Home</a></li>
+      <li><a href="data-ai.html">📊 Data &amp; AI</a></li>
+      <li><a href="infrastructure-devops.html">⚙️ Infrastructure &amp; DevOps</a></li>
+      <li><a href="security.html">🔒 Security</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ─── Breadcrumb ──────────────────────────────────────────────────────── -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">MRx Platform</a>
+    <span class="sep">›</span>
+    <strong>Home</strong>
+  </div>
+</div>
+
+<!-- ─── Hero ────────────────────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-badge">MRx Platform Portal</div>
+    <h1>Modern Research &amp; Analytics Platform</h1>
+    <p>A McKinsey-wide engineering platform delivering secure, scalable, and AI-augmented data and analytics capabilities — built on Databricks, Azure, and GitHub with enterprise-grade governance and operational excellence.</p>
+  </div>
+</section>
+
+<!-- ─── Main Content ────────────────────────────────────────────────────── -->
+<main class="page-content">
+
+  <!-- Vision & Mission ──────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="vision">
+    <div class="section-title">
+      <span class="icon icon-blue" style="background:#dbeeff;">🎯</span>
+      Vision &amp; Mission
+    </div>
+    <div class="section-subtitle">Our strategic direction and guiding principles</div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-blue">🔭</div>
+          <div class="card-title">Platform Vision</div>
+        </div>
+        <p class="card-desc">Enable McKinsey's Modern Research practices with a <strong>cloud-native, AI-augmented data platform</strong> that delivers trusted insights faster — accelerating the firm's ability to serve clients with data-driven intelligence at scale.</p>
+        <p class="card-desc" style="margin-top:10px;">The MRx platform is the <strong>single pane of glass</strong> for all research data engineering: from raw ingestion to curated, governed datasets that fuel analytics, AI models, and client-facing products.</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-teal">🚀</div>
+          <div class="card-title">Mission Statement</div>
+        </div>
+        <p class="card-desc">Deliver a <strong>production-grade, enterprise-ready</strong> data engineering foundation that:</p>
+        <ul class="styled-list" style="margin-top:10px;">
+          <li>Accelerates time-to-insight through config-driven pipelines and AI-assisted development</li>
+          <li>Enforces security, compliance, and governance by design — not by afterthought</li>
+          <li>Reduces operational toil through automated CICD, observability, and self-healing patterns</li>
+          <li>Enables cost-aware, sustainable compute consumption aligned with FinOps principles</li>
+          <li>Empowers engineering teams with standardized frameworks, tools, and best practices</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-4">
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mckinsey-blue);">Medallion</div>
+        <div class="stat-label">Architecture (Bronze → Silver → Gold)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mckinsey-teal);">Zero-Trust</div>
+        <div class="stat-label">Security Model &amp; Access Control</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mckinsey-green);">AI-First</div>
+        <div class="stat-label">Development Workflow with Copilot &amp; Assistants</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mckinsey-orange);">GitOps</div>
+        <div class="stat-label">Asset Bundles &amp; Approval Gateway CICD</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Platform Summary ──────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="summary">
+    <div class="section-title">
+      <span class="icon icon-teal">📋</span>
+      Platform Summary
+    </div>
+    <div class="section-subtitle">End-to-end overview of the MRx data engineering ecosystem</div>
+
+    <div class="info-box blue" style="margin-bottom:20px;">
+      <strong>What is MRx?</strong>
+      MRx (Modern Research Platform) is McKinsey's enterprise Databricks-on-Azure data engineering platform. It provides standardised frameworks for data ingestion, transformation, governance, and AI-powered analytics — all deployed through Terraform-managed infrastructure and managed by GitOps CICD pipelines.
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-blue">🏗️</div>
+          <div class="card-title">Data Engineering Foundation</div>
+        </div>
+        <ul class="styled-list">
+          <li>Config-driven / metadata-driven ingestion pipelines</li>
+          <li>Medallion architecture: Bronze, Silver, Gold layers</li>
+          <li>Managed Delta tables with partitioning &amp; vacuuming</li>
+          <li>Databricks Asset Bundles for environment promotion</li>
+          <li>SonarQube for continuous code quality analysis</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Databricks</span><span class="tag tag-teal">Delta Lake</span><span class="tag tag-gray">Azure</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-green">🤖</div>
+          <div class="card-title">AI &amp; Intelligence Layer</div>
+        </div>
+        <ul class="styled-list">
+          <li>GitHub Copilot &amp; Claude AI for development acceleration</li>
+          <li>Databricks AI Assistant for notebook intelligence</li>
+          <li>OpenAI integrations for research augmentation</li>
+          <li>MCP (Model Context Protocol) servers</li>
+          <li>Windsurf AI-assisted IDE (TBD)</li>
+        </ul>
+        <div class="tags"><span class="tag tag-purple">OpenAI</span><span class="tag tag-blue">Copilot</span><span class="tag tag-teal">MCP</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-orange">🔒</div>
+          <div class="card-title">Security &amp; Compliance</div>
+        </div>
+        <ul class="styled-list">
+          <li>Wiz Cloud security posture monitoring</li>
+          <li>Panorama vulnerability management integration</li>
+          <li>GitHub Advanced Security scanning</li>
+          <li>SOX/SOC audit logging and compliance framework</li>
+          <li>Zero-trust network &amp; identity model</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">Wiz</span><span class="tag tag-orange">Panorama</span><span class="tag tag-gray">SOX/SOC</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-purple">⚙️</div>
+          <div class="card-title">Infrastructure &amp; Platform</div>
+        </div>
+        <ul class="styled-list">
+          <li>Terraform IaC for all Azure and Databricks resources</li>
+          <li>Compute policies, cluster auto-sizing &amp; optimisation</li>
+          <li>FinOps cost monitoring via Azure Cost Management</li>
+          <li>Grafana + Azure Monitor for platform observability</li>
+          <li>LeanIX integration for architecture governance (BA/AS numbers)</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Terraform</span><span class="tag tag-teal">Grafana</span><span class="tag tag-green">LeanIX</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-teal">🗂️</div>
+          <div class="card-title">Data Governance</div>
+        </div>
+        <ul class="styled-list">
+          <li>Alation data catalog integration for discoverability</li>
+          <li>Automated lineage extraction from Databricks Unity Catalog</li>
+          <li>Table &amp; view definitions with business data glossary</li>
+          <li>Data quality framework with automated DQ checks</li>
+          <li>Role-based access control and data classification</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Alation</span><span class="tag tag-teal">Unity Catalog</span><span class="tag tag-green">Lineage</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon icon-red">📣</div>
+          <div class="card-title">Operations &amp; Support</div>
+        </div>
+        <ul class="styled-list">
+          <li>ServiceNow for incident &amp; change management</li>
+          <li>Jira for sprint planning and issue tracking</li>
+          <li>Defined assignment groups per platform domain</li>
+          <li>Automated error reporting &amp; alerting framework</li>
+          <li>RTO/RPO targets, HA/DR architecture standards</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">ServiceNow</span><span class="tag tag-blue">Jira</span><span class="tag tag-gray">HA/DR</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- MRx Capabilities ──────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="capabilities">
+    <div class="section-title">
+      <span class="icon icon-purple">⚡</span>
+      MRx Capabilities
+    </div>
+    <div class="section-subtitle">Core engineering and platform capabilities delivered by the MRx Platform</div>
+
+    <table class="data-table" style="margin-bottom:20px;">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Description</th>
+          <th>Key Technologies</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>NFR Framework</strong></td>
+          <td>Non-functional requirements template covering tagging, security checks, RTO/RPO, SLAs, HA/DR, and LeanIX integration with BA/AS numbers</td>
+          <td>LeanIX, Azure Policy, ServiceNow</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Development Framework</strong></td>
+          <td>Config-driven / metadata-driven engineering pipelines with AI-assisted development, ingestion tools, and SonarQube code quality gates</td>
+          <td>Databricks, SonarQube, GitHub Copilot</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Data Management</strong></td>
+          <td>Data modelling, catalog structure, medallion layers (Bronze/Silver/Gold), managed tables, partitioning, vacuuming strategies</td>
+          <td>Delta Lake, Unity Catalog, Alation</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Testing Framework</strong></td>
+          <td>Data quality framework with automated DQ checks, unit testing frameworks, and regression testing pipelines</td>
+          <td>Great Expectations, pytest, Databricks</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Error Handling</strong></td>
+          <td>Audit logs, exception logging, error reporting, and alerting framework across all pipeline components</td>
+          <td>Azure Monitor, Grafana, PagerDuty</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>CICD Pipeline</strong></td>
+          <td>Asset bundles, GitHub Actions workflows, feature flags, approval gateways for code release management</td>
+          <td>GitHub Actions, Databricks Asset Bundles</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Data Governance</strong></td>
+          <td>Lineage extraction, table/view definitions, data glossary, Alation catalog integration</td>
+          <td>Alation, Unity Catalog, OpenMetadata</td>
+          <td><span class="tag tag-blue">In Progress</span></td>
+        </tr>
+        <tr>
+          <td><strong>Ops Readiness</strong></td>
+          <td>Change management, incident management, assignment groups, Jira, ServiceNow, SOX/SOC auditing</td>
+          <td>ServiceNow, Jira, Azure Monitor</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Infrastructure</strong></td>
+          <td>Terraform deployments, compute policies, tagging, cluster resizing, compute optimisation</td>
+          <td>Terraform, Azure, Databricks</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Cost Avoidance</strong></td>
+          <td>Cost monitoring using FinOps tooling with cluster auto-termination and right-sizing recommendations</td>
+          <td>Azure Cost Management, FinOps</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>Platform Observability</strong></td>
+          <td>Grafana dashboards and Azure Monitor alerting for real-time platform health and pipeline SLAs</td>
+          <td>Grafana, Azure Monitor</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+        <tr>
+          <td><strong>AI Capabilities</strong></td>
+          <td>OpenAI, GitHub Copilot/Claude, MCP servers, Databricks AI Assistant, Windsurf IDE</td>
+          <td>OpenAI, GitHub Copilot, Databricks AI</td>
+          <td><span class="tag tag-blue">In Progress</span></td>
+        </tr>
+        <tr>
+          <td><strong>Security</strong></td>
+          <td>Panorama vulnerability management, Wiz Cloud monitoring, GitHub Security scanner, monitoring &amp; alerting for compromised data</td>
+          <td>Wiz, Panorama, GitHub Advanced Security</td>
+          <td><span class="tag tag-green">Live</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Quick Links ───────────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="quicklinks">
+    <div class="section-title">
+      <span class="icon icon-yellow" style="background:#fff3cc;">🔗</span>
+      Quick Links &amp; Applications
+    </div>
+    <div class="section-subtitle">Key platform portals, tools, and resources</div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+
+      <div>
+        <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-secondary);margin-bottom:12px;">Data &amp; Development</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="data-ai.html" class="quick-link-card">
+            <div class="quick-link-icon icon-blue">📊</div>
+            <div class="quick-link-text">
+              <strong>Data &amp; AI Portal</strong>
+              <span>Development frameworks, data management, testing, governance, and AI tooling</span>
+            </div>
+          </a>
+          <a href="#" class="quick-link-card">
+            <div class="quick-link-icon" style="background:#f0e8ff;">🧱</div>
+            <div class="quick-link-text">
+              <strong>Databricks Workspace</strong>
+              <span>Unified analytics platform for data engineering, ML, and BI workloads</span>
+            </div>
+          </a>
+          <a href="#" class="quick-link-card">
+            <div class="quick-link-icon icon-teal">📚</div>
+            <div class="quick-link-text">
+              <strong>Alation Data Catalog</strong>
+              <span>Data discovery, lineage, glossary, and stewardship platform</span>
+            </div>
+          </a>
+          <a href="#" class="quick-link-card">
+            <div class="quick-link-icon icon-green">🔍</div>
+            <div class="quick-link-text">
+              <strong>SonarQube Dashboard</strong>
+              <span>Continuous code quality and security vulnerability scanning</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-secondary);margin-bottom:12px;">Infrastructure &amp; Operations</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="infrastructure-devops.html" class="quick-link-card">
+            <div class="quick-link-icon icon-purple">⚙️</div>
+            <div class="quick-link-text">
+              <strong>Infrastructure &amp; DevOps Portal</strong>
+              <span>Terraform IaC, CICD workflows, ops readiness, cost, and observability</span>
+            </div>
+          </a>
+          <a href="#" class="quick-link-card">
+            <div class="quick-link-icon" style="background:#e8f5e9;">📈</div>
+            <div class="quick-link-text">
+              <strong>Grafana Dashboards</strong>
+              <span>Platform observability, pipeline SLA monitoring, and health dashboards</span>
+            </div>
+          </a>
+          <a href="#" class="quick-link-card">
+            <div class="quick-link-icon icon-orange">🎫</div>
+            <div class="quick-link-text">
+              <strong>ServiceNow Portal</strong>
+              <span>Incident management, change management, and service requests</span>
+            </div>
+          </a>
+          <a href="#" class="quick-link-card">
+            <div class="quick-link-icon icon-blue">📋</div>
+            <div class="quick-link-text">
+              <strong>Jira Project Board</strong>
+              <span>Sprint planning, backlog management, and delivery tracking</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div>
+      <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-secondary);margin-bottom:12px;">Security &amp; Compliance</p>
+      <div class="grid-4">
+        <a href="security.html" class="quick-link-card">
+          <div class="quick-link-icon icon-red">🔒</div>
+          <div class="quick-link-text">
+            <strong>Security Portal</strong>
+            <span>Vulnerability management, cloud security &amp; compliance</span>
+          </div>
+        </a>
+        <a href="#" class="quick-link-card">
+          <div class="quick-link-icon icon-red">☁️</div>
+          <div class="quick-link-text">
+            <strong>Wiz Cloud Security</strong>
+            <span>Cloud security posture &amp; risk management</span>
+          </div>
+        </a>
+        <a href="#" class="quick-link-card">
+          <div class="quick-link-icon" style="background:#fff3cc;">🛡️</div>
+          <div class="quick-link-text">
+            <strong>GitHub Security</strong>
+            <span>Advanced Security scanning, secret detection &amp; alerts</span>
+          </div>
+        </a>
+        <a href="#" class="quick-link-card">
+          <div class="quick-link-icon icon-orange">🏛️</div>
+          <div class="quick-link-text">
+            <strong>LeanIX Architecture</strong>
+            <span>Enterprise architecture governance with BA/AS numbers</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Platform Navigation ───────────────────────────────────────────────── -->
+  <section class="section-anchor" id="navigation">
+    <div class="section-title">
+      <span class="icon icon-blue">🗺️</span>
+      Platform Knowledge Base
+    </div>
+    <div class="section-subtitle">Explore the four core domains of the MRx Platform</div>
+
+    <div class="grid-4">
+      <a href="index.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,var(--mckinsey-blue),var(--mckinsey-blue-mid));border-radius:10px;padding:16px;width:100%;color:white;font-size:28px;text-align:center;">🏠</div>
+        <div>
+          <strong style="display:block;font-size:15px;font-weight:700;color:var(--mckinsey-blue);margin-bottom:4px;">Home</strong>
+          <span style="font-size:13px;color:var(--text-secondary);">Vision, summary, platform overview and quick links</span>
+        </div>
+      </a>
+      <a href="data-ai.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,#0d4e8a,#1a7abf);border-radius:10px;padding:16px;width:100%;color:white;font-size:28px;text-align:center;">📊</div>
+        <div>
+          <strong style="display:block;font-size:15px;font-weight:700;color:var(--mckinsey-blue);margin-bottom:4px;">Data &amp; AI</strong>
+          <span style="font-size:13px;color:var(--text-secondary);">Frameworks, pipelines, governance, testing, and AI tooling</span>
+        </div>
+      </a>
+      <a href="infrastructure-devops.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,#005755,#00a9a5);border-radius:10px;padding:16px;width:100%;color:white;font-size:28px;text-align:center;">⚙️</div>
+        <div>
+          <strong style="display:block;font-size:15px;font-weight:700;color:var(--mckinsey-blue);margin-bottom:4px;">Infrastructure &amp; DevOps</strong>
+          <span style="font-size:13px;color:var(--text-secondary);">Terraform, CICD, ops readiness, cost &amp; observability</span>
+        </div>
+      </a>
+      <a href="security.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,#b71c1c,#e53935);border-radius:10px;padding:16px;width:100%;color:white;font-size:28px;text-align:center;">🔒</div>
+        <div>
+          <strong style="display:block;font-size:15px;font-weight:700;color:var(--mckinsey-blue);margin-bottom:4px;">Security</strong>
+          <span style="font-size:13px;color:var(--text-secondary);">Vulnerability management, cloud security &amp; compliance</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <strong>MRx Platform</strong> &mdash; McKinsey Internal Knowledge Portal &mdash; Data &amp; Analytics Engineering &mdash; 2024
+</footer>
+
+<script>
+  // Simple accordion toggle
+  document.querySelectorAll('.accordion-header').forEach(function(header) {
+    header.addEventListener('click', function() {
+      var acc = this.closest('.accordion');
+      acc.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
