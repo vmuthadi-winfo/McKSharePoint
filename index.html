@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRx Nexus | Data &amp; AI Center of Excellence</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-nexus {
+      background: linear-gradient(135deg, #051c2c 0%, #0d3a5a 50%, #0d4e8a 100%);
+      color: #fff;
+      padding: 64px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-nexus::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,163,224,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-nexus::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 10%;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(0,169,165,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-nexus-inner { max-width: 1400px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-nexus-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,163,224,0.2); border: 1px solid rgba(0,163,224,0.4);
+      color: #7ed9f7; padding: 5px 16px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-nexus h1 { font-size: 44px; font-weight: 900; line-height: 1.15; margin-bottom: 8px; letter-spacing: -1px; }
+    .hero-nexus h1 span { color: var(--mrx-accent); }
+    .hero-sub-title { font-size: 20px; font-weight: 400; opacity: 0.85; margin-bottom: 18px; }
+    .hero-nexus .hero-desc { font-size: 16px; opacity: 0.78; max-width: 780px; line-height: 1.7; }
+    .hero-url {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.9); padding: 8px 18px; border-radius: 6px;
+      font-size: 13px; font-weight: 600; margin-top: 20px; letter-spacing: 0.3px;
+    }
+    .nexus-def-box {
+      background: var(--white); border-radius: 12px; padding: 28px 32px;
+      border-left: 5px solid var(--mrx-accent);
+      box-shadow: var(--card-shadow);
+    }
+    .nexus-def-box .phonetic { font-size: 13px; color: var(--text-secondary); margin-bottom: 8px; font-style: italic; }
+    .nexus-def-box .definition { font-size: 16px; color: var(--mrx-blue); line-height: 1.65; }
+    .nexus-def-box .quote { font-size: 15px; color: var(--text-secondary); font-style: italic; margin-top: 14px; border-top: 1px solid var(--mrx-border); padding-top: 14px; }
+    .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media(max-width:1100px){ .pillar-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:680px){ .pillar-grid { grid-template-columns: 1fr; } }
+    .pillar-card {
+      background: var(--white); border: 1px solid var(--mrx-border);
+      border-radius: 10px; padding: 18px 16px;
+      box-shadow: var(--card-shadow); transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+    }
+    .pillar-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-2px); }
+    .pillar-num {
+      position: absolute; top: 12px; right: 14px;
+      font-size: 22px; font-weight: 900; color: var(--mrx-border);
+    }
+    .pillar-icon { font-size: 24px; margin-bottom: 8px; }
+    .pillar-name { font-size: 14px; font-weight: 700; color: var(--mrx-blue); margin-bottom: 5px; }
+    .pillar-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+    .pillar-tags span { font-size: 11px; background: var(--mrx-gray-light); color: var(--text-secondary); padding: 2px 7px; border-radius: 10px; }
+    .objective-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    @media(max-width:1100px){ .objective-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media(max-width:680px){ .objective-grid { grid-template-columns: 1fr 1fr; } }
+    .obj-card {
+      background: linear-gradient(135deg, var(--mrx-blue), var(--mrx-blue-mid));
+      color: #fff; border-radius: 10px; padding: 20px 16px; text-align: center;
+    }
+    .obj-card .obj-icon { font-size: 26px; margin-bottom: 10px; }
+    .obj-card .obj-text { font-size: 13px; font-weight: 600; line-height: 1.4; }
+    .what-means-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    @media(max-width:720px){ .what-means-grid { grid-template-columns: 1fr; } }
+    .wm-card {
+      background: var(--white); border: 1px solid var(--mrx-border); border-radius: 10px; padding: 22px;
+      display: flex; gap: 14px; box-shadow: var(--card-shadow);
+    }
+    .wm-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+    .wm-title { font-size: 15px; font-weight: 700; color: var(--mrx-blue); margin-bottom: 6px; }
+    .wm-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+    .get-connected-steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    @media(max-width:900px){ .get-connected-steps { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px){ .get-connected-steps { grid-template-columns: 1fr; } }
+    .gc-step {
+      background: var(--white); border: 1px solid var(--mrx-border); border-radius: 10px;
+      padding: 22px 18px; box-shadow: var(--card-shadow); text-align: center;
+    }
+    .gc-step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--mrx-blue); color: #fff;
+      font-weight: 900; font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .gc-step-icon { font-size: 22px; margin-bottom: 8px; }
+    .gc-step-title { font-size: 14px; font-weight: 700; color: var(--mrx-blue); margin-bottom: 6px; }
+    .gc-step-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
+    .mission-box {
+      background: linear-gradient(135deg, var(--mrx-blue) 0%, var(--mrx-blue-mid) 100%);
+      color: #fff; border-radius: 12px; padding: 30px 32px;
+      text-align: center;
+    }
+    .mission-box .mission-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.7; margin-bottom: 14px; }
+    .mission-box .mission-text { font-size: 18px; line-height: 1.65; font-weight: 400; opacity: 0.93; max-width: 900px; margin: 0 auto; }
+    .footer-brand { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- ─── Top Navigation ─────────────────────────────────────────────────── -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-logo">MRx</div>
+      <div>
+        <span class="nav-brand-text">MRx Nexus</span>
+        <span class="nav-brand-sub">Data &amp; AI CoE · MomentimRx</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">🏠 Home</a></li>
+      <li><a href="data-ai.html">📊 Data &amp; AI</a></li>
+      <li><a href="infrastructure-devops.html">⚙️ Infrastructure &amp; DevOps</a></li>
+      <li><a href="security.html">🔒 Security</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ─── Hero ────────────────────────────────────────────────────────────── -->
+<section class="hero-nexus">
+  <div class="hero-nexus-inner">
+    <div class="hero-nexus-badge">🏛️ Enterprise Standard v1.0 &nbsp;·&nbsp; March 2026</div>
+    <h1>MRx <span>Nexus</span></h1>
+    <p class="hero-sub-title">Data &amp; AI Center of Excellence — Knowledge Portal</p>
+    <p class="hero-desc">
+      A centralized engineering and AI delivery model established by <strong>MomentimRx</strong> to standardize, govern, and accelerate how data, analytics, and AI capabilities are built and reused — initially across MRx, now expanding as the reference architecture for the broader CSI organization.
+    </p>
+    <div class="hero-url">🔗 &nbsp;mckessoncorp.sharepoint.com/sites/MRXNexusCOE</div>
+  </div>
+</section>
+
+<!-- ─── Breadcrumb ──────────────────────────────────────────────────────── -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">MRx Nexus CoE</a>
+    <span class="sep">›</span>
+    <strong>Home</strong>
+  </div>
+</div>
+
+<!-- ─── Main Content ────────────────────────────────────────────────────── -->
+<main class="page-content">
+
+  <!-- What is Nexus? ───────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="what-is-nexus" style="margin-bottom:36px;">
+    <div class="grid-2">
+      <div class="nexus-def-box">
+        <div class="phonetic">nex·us &nbsp;/ˈnekʷsəs/ &nbsp;· &nbsp;noun</div>
+        <p class="definition">
+          In healthcare and enterprise data contexts, <strong>nexus</strong> denotes the central hub, convergence point, or core node where data streams, clinical systems, and operational teams intersect and align. It is the binding center from which coordination, governance, and knowledge radiate outward.
+        </p>
+        <p class="quote">"MRx Nexus is the core for a successful data and AI operational model within the organization."</p>
+      </div>
+      <div class="mission-box">
+        <div class="mission-label">Our Mission</div>
+        <p class="mission-text">
+          To establish and govern enterprise-wide standards, frameworks, and best practices for Data &amp; AI engineering — enabling <strong>scalable, secure, and high-quality</strong> data platform delivery across the organization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Strategic Objectives ─────────────────────────────────────────────── -->
+  <section class="section-anchor" id="objectives">
+    <div class="section-title"><span class="icon icon-blue">🎯</span> Strategic Objectives</div>
+    <div class="section-subtitle">Five pillars that define what the Data &amp; AI CoE aims to achieve</div>
+    <div class="objective-grid" style="margin-bottom:24px;">
+      <div class="obj-card"><div class="obj-icon">📏</div><div class="obj-text">Define Standard Reference Architecture</div></div>
+      <div class="obj-card" style="background:linear-gradient(135deg,#0d4e8a,#1a7abf);"><div class="obj-icon">⭐</div><div class="obj-text">Act as Benchmark for Future Programs</div></div>
+      <div class="obj-card" style="background:linear-gradient(135deg,#005755,#00a9a5);"><div class="obj-icon">🔄</div><div class="obj-text">Establish Repeatable Delivery Processes</div></div>
+      <div class="obj-card" style="background:linear-gradient(135deg,#5e35b1,#7e57c2);"><div class="obj-icon">⚡</div><div class="obj-text">Enable Platform Scalability &amp; AI Readiness</div></div>
+      <div class="obj-card" style="background:linear-gradient(135deg,#7a2e0b,#e8602c);"><div class="obj-icon">🛡️</div><div class="obj-text">Enforce Quality, Security &amp; Governance</div></div>
+    </div>
+
+    <div class="what-means-grid">
+      <div class="wm-card">
+        <div class="wm-icon">🏗️</div>
+        <div>
+          <div class="wm-title">A Shared Engineering Model</div>
+          <p class="wm-desc">Rather than each project rebuilding from scratch, the CoE provides a common foundation — reusable pipelines, pre-built patterns, and enforced standards that every team can consume from day one.</p>
+        </div>
+      </div>
+      <div class="wm-card">
+        <div class="wm-icon">🌐</div>
+        <div>
+          <div class="wm-title">Expanding Beyond MRx</div>
+          <p class="wm-desc">What started as an internal MRx initiative is now becoming the reference architecture for the broader CSI organization — establishing a blueprint for how data and AI work gets done enterprise-wide.</p>
+        </div>
+      </div>
+      <div class="wm-card">
+        <div class="wm-icon">⚡</div>
+        <div>
+          <div class="wm-title">Accelerated Time-to-Value</div>
+          <p class="wm-desc">By standardizing ingestion, transformation, governance, CI/CD, and AI tooling, the CoE dramatically cuts the time it takes to take a data or AI idea from concept to production-ready capability.</p>
+        </div>
+      </div>
+      <div class="wm-card">
+        <div class="wm-icon">🛡️</div>
+        <div>
+          <div class="wm-title">Built-in Quality &amp; Governance</div>
+          <p class="wm-desc">Security, compliance, data quality, and operational readiness are baked into every pattern — not bolted on. Teams inherit best practices automatically rather than discovering gaps in production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- 13 CoE Pillars ───────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="pillars">
+    <div class="section-title"><span class="icon icon-purple">⚡</span> 13 CoE Core Pillars</div>
+    <div class="section-subtitle">Technical pillars that define how the MRx CoE delivers, governs, and operates the Data &amp; AI Platform — spanning engineering, data management, security, infrastructure, and AI enablement.</div>
+
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <span class="pillar-num">1</span>
+        <div class="pillar-icon">📋</div>
+        <div class="pillar-name">NFR &amp; Standards</div>
+        <div class="pillar-tags"><span>Tagging</span><span>RTO/RPO</span><span>SLAs</span><span>HA/DR</span><span>LeanIX</span><span>CMDB</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">2</span>
+        <div class="pillar-icon">⚙️</div>
+        <div class="pillar-name">Dev Framework</div>
+        <div class="pillar-tags"><span>Config-Driven</span><span>Ingestion</span><span>AI-Assisted Dev</span><span>SonarQube</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">3</span>
+        <div class="pillar-icon">🗄️</div>
+        <div class="pillar-name">Data Management</div>
+        <div class="pillar-tags"><span>Modeling</span><span>Unity Catalog</span><span>Medallion</span><span>Partitioning</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">4</span>
+        <div class="pillar-icon">🧪</div>
+        <div class="pillar-name">Testing Framework</div>
+        <div class="pillar-tags"><span>DQ Framework</span><span>Unit Testing</span><span>Integration</span><span>Schema Validation</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">5</span>
+        <div class="pillar-icon">🚨</div>
+        <div class="pillar-name">Error Handling</div>
+        <div class="pillar-tags"><span>Audit Logs</span><span>Exceptions</span><span>Alerting</span><span>Retry Policy</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">6</span>
+        <div class="pillar-icon">🔄</div>
+        <div class="pillar-name">CI/CD</div>
+        <div class="pillar-tags"><span>Asset Bundles</span><span>Git Workflows</span><span>Feature Flags</span><span>Approval Gate</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">7</span>
+        <div class="pillar-icon">🏛️</div>
+        <div class="pillar-name">Data Governance</div>
+        <div class="pillar-tags"><span>Lineage</span><span>Glossary</span><span>Alation</span><span>Classification</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">8</span>
+        <div class="pillar-icon">🔧</div>
+        <div class="pillar-name">Ops Readiness</div>
+        <div class="pillar-tags"><span>Change Mgmt</span><span>Incident Mgmt</span><span>Jira</span><span>ServiceNow</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">9</span>
+        <div class="pillar-icon">🏗️</div>
+        <div class="pillar-name">Infrastructure</div>
+        <div class="pillar-tags"><span>Terraform IaC</span><span>Compute Policies</span><span>Tagging</span><span>Cluster Resizing</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">10</span>
+        <div class="pillar-icon">💰</div>
+        <div class="pillar-name">Cost Avoidance</div>
+        <div class="pillar-tags"><span>FinOps</span><span>Chargeback</span><span>Right-Sizing</span><span>Auto-Termination</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">11</span>
+        <div class="pillar-icon">📊</div>
+        <div class="pillar-name">Observability</div>
+        <div class="pillar-tags"><span>Grafana</span><span>Azure Monitor</span><span>SLA Tracking</span><span>Tracing</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">12</span>
+        <div class="pillar-icon">🔒</div>
+        <div class="pillar-name">Security</div>
+        <div class="pillar-tags"><span>Panorama</span><span>Wiz</span><span>GitHub Security</span><span>Zero Trust</span></div>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">13</span>
+        <div class="pillar-icon">🤖</div>
+        <div class="pillar-name">AI Enablement</div>
+        <div class="pillar-tags"><span>Azure OpenAI</span><span>GitHub Copilot</span><span>Claude</span><span>MCP Servers</span><span>Databricks AI</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- What You'll Find in MRx Nexus ───────────────────────────────────── -->
+  <section class="section-anchor" id="whats-inside">
+    <div class="section-title"><span class="icon icon-teal">📌</span> What You'll Find in MRx Nexus</div>
+    <div class="section-subtitle">Browse the knowledge base organized by CoE pillar</div>
+    <div class="grid-3" style="margin-bottom:24px;">
+      <a href="data-ai.html#nfr" class="quick-link-card">
+        <div class="quick-link-icon icon-orange">📋</div>
+        <div class="quick-link-text"><strong>CoE Standards &amp; Patterns</strong><span>NFR templates, architectural blueprints, and enterprise coding standards</span></div>
+      </a>
+      <a href="data-ai.html#ai" class="quick-link-card">
+        <div class="quick-link-icon icon-purple">🤖</div>
+        <div class="quick-link-text"><strong>AI Enablement Toolkits</strong><span>Prompt libraries, Copilot guides, MCP server docs, and model integration patterns</span></div>
+      </a>
+      <a href="data-ai.html#cicd" class="quick-link-card">
+        <div class="quick-link-icon icon-blue">🔄</div>
+        <div class="quick-link-text"><strong>CI/CD Pipeline Templates</strong><span>Asset Bundles, GitHub Actions workflows, feature flags, and approval gateway patterns</span></div>
+      </a>
+      <a href="data-ai.html#governance" class="quick-link-card">
+        <div class="quick-link-icon icon-teal">📊</div>
+        <div class="quick-link-text"><strong>Governance Frameworks</strong><span>Data quality scorecards, lineage maps, Alation integration guides, and glossary</span></div>
+      </a>
+      <a href="security.html" class="quick-link-card">
+        <div class="quick-link-icon icon-red">🛡️</div>
+        <div class="quick-link-text"><strong>Security &amp; Compliance Runbooks</strong><span>Panorama, Wiz, GitHub Security, ops readiness, and incident response playbooks</span></div>
+      </a>
+      <a href="infrastructure-devops.html" class="quick-link-card">
+        <div class="quick-link-icon icon-green">🏗️</div>
+        <div class="quick-link-text"><strong>Infrastructure &amp; Observability</strong><span>Terraform modules, Grafana dashboards, cost avoidance strategies, and SLO tracking</span></div>
+      </a>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Get Connected ────────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="get-connected">
+    <div class="section-title"><span class="icon icon-blue">🚀</span> Get Connected</div>
+    <div class="section-subtitle">Four steps to start using MRx Nexus today</div>
+    <div class="get-connected-steps" style="margin-bottom:24px;">
+      <div class="gc-step">
+        <div class="gc-step-num">1</div>
+        <div class="gc-step-icon">🔗</div>
+        <div class="gc-step-title">Visit MRx Nexus</div>
+        <p class="gc-step-desc">Navigate to the MRx Nexus SharePoint portal using your McKesson SSO credentials. No additional access requests required for MRx team members.</p>
+      </div>
+      <div class="gc-step">
+        <div class="gc-step-num">2</div>
+        <div class="gc-step-icon">📚</div>
+        <div class="gc-step-title">Explore the Knowledge Base</div>
+        <p class="gc-step-desc">Browse CoE standards, architecture patterns, AI toolkits, governance frameworks, and runbooks — all organized by CoE pillar.</p>
+      </div>
+      <div class="gc-step">
+        <div class="gc-step-num">3</div>
+        <div class="gc-step-icon">💬</div>
+        <div class="gc-step-title">Engage &amp; Contribute</div>
+        <p class="gc-step-desc">Submit feedback, propose new standards, share reusable assets, or request a CoE review via the built-in collaboration channels on Slack <strong>#data-ai-coe</strong>.</p>
+      </div>
+      <div class="gc-step">
+        <div class="gc-step-num">4</div>
+        <div class="gc-step-icon">🚀</div>
+        <div class="gc-step-title">Accelerate Your Team</div>
+        <p class="gc-step-desc">Onboard new engineers using Nexus as the single source of truth — reducing ramp time and ensuring every team starts from best practices.</p>
+      </div>
+    </div>
+
+    <div class="info-box blue">
+      <strong>Contact &amp; Support</strong>
+      Questions? Contact the CoE Team via <strong>ServiceNow</strong> or Slack <strong>#data-ai-coe</strong> &nbsp;|&nbsp; MRx Nexus SharePoint: <strong>mckessoncorp.sharepoint.com/sites/MRXNexusCOE</strong>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- Navigate Sections ────────────────────────────────────────────────── -->
+  <section class="section-anchor" id="navigation">
+    <div class="section-title"><span class="icon icon-blue">🗺️</span> Navigate the CoE Knowledge Base</div>
+    <div class="section-subtitle">All content organized into four domain sections</div>
+    <div class="grid-4">
+      <a href="index.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,var(--mrx-blue),var(--mrx-blue-mid));border-radius:10px;padding:16px;width:100%;color:white;font-size:26px;text-align:center;">🏠</div>
+        <div><strong style="display:block;font-size:15px;font-weight:700;color:var(--mrx-blue);margin-bottom:4px;">Home</strong><span style="font-size:13px;color:var(--text-secondary);">Vision, mission, 13 pillars overview, and get-connected guide</span></div>
+      </a>
+      <a href="data-ai.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,#0d4e8a,#1a7abf);border-radius:10px;padding:16px;width:100%;color:white;font-size:26px;text-align:center;">📊</div>
+        <div><strong style="display:block;font-size:15px;font-weight:700;color:var(--mrx-blue);margin-bottom:4px;">Data &amp; AI</strong><span style="font-size:13px;color:var(--text-secondary);">Pillars 1–7 &amp; 13: NFR, Dev Framework, Data Mgmt, Testing, Error Handling, CI/CD, Governance, AI</span></div>
+      </a>
+      <a href="infrastructure-devops.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,#005755,#00a9a5);border-radius:10px;padding:16px;width:100%;color:white;font-size:26px;text-align:center;">⚙️</div>
+        <div><strong style="display:block;font-size:15px;font-weight:700;color:var(--mrx-blue);margin-bottom:4px;">Infrastructure &amp; DevOps</strong><span style="font-size:13px;color:var(--text-secondary);">Pillars 8–11: Ops Readiness, Infrastructure, Cost Avoidance, Observability</span></div>
+      </a>
+      <a href="security.html" class="quick-link-card" style="flex-direction:column;align-items:flex-start;gap:10px;">
+        <div style="background:linear-gradient(135deg,#b71c1c,#e53935);border-radius:10px;padding:16px;width:100%;color:white;font-size:26px;text-align:center;">🔒</div>
+        <div><strong style="display:block;font-size:15px;font-weight:700;color:var(--mrx-blue);margin-bottom:4px;">Security</strong><span style="font-size:13px;color:var(--text-secondary);">Pillar 12: Panorama, Wiz Cloud, GitHub Security, compromised data alerting</span></div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── Footer ──────────────────────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-brand">
+    <strong>MRx Nexus</strong> &nbsp;·&nbsp; Data &amp; AI Center of Excellence &nbsp;·&nbsp; Enterprise Standards v1.0 &nbsp;·&nbsp; March 2026
+  </div>
+  <div>MomentimRx &nbsp;|&nbsp; © 2025 McKesson Corporation &nbsp;|&nbsp; McKesson Proprietary and Confidential</div>
+</footer>
+
+</body>
+</html>

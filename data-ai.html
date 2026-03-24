@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRx Nexus | Data &amp; AI</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .layer-card { border-radius: 10px; padding: 22px; box-shadow: var(--card-shadow); border: 1px solid var(--mrx-border); }
+    .dq-dim-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    @media(max-width:720px){ .dq-dim-grid { grid-template-columns: repeat(2,1fr); } }
+    .dq-dim { background: var(--mrx-gray-light); border-radius: 8px; padding: 12px 14px; font-size: 14px; font-weight: 600; color: var(--mrx-blue); text-align: center; }
+    .ai-status-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-bottom: 20px; }
+    @media(max-width:900px){ .ai-status-grid { grid-template-columns: repeat(2,1fr); } }
+    .ai-status-badge { border-radius: 8px; padding: 14px 12px; text-align: center; font-size: 13px; }
+    .ai-tool-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    @media(max-width:900px){ .ai-tool-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px){ .ai-tool-grid { grid-template-columns: 1fr; } }
+    code { background: #f0f4f8; border-radius: 4px; padding: 1px 6px; font-size: 12px; color: #c0392b; font-family: 'Courier New', monospace; }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-logo">MRx</div>
+      <div>
+        <span class="nav-brand-text">MRx Nexus</span>
+        <span class="nav-brand-sub">Data &amp; AI CoE · MomentimRx</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="data-ai.html" class="active">📊 Data &amp; AI</a></li>
+      <li><a href="infrastructure-devops.html">⚙️ Infrastructure &amp; DevOps</a></li>
+      <li><a href="security.html">🔒 Security</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">MRx Nexus CoE</a><span class="sep">›</span><strong>Data &amp; AI</strong>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-badge">Pillars 1–7 &amp; 13 · Enterprise Standards v1.0</div>
+    <h1>Data &amp; AI Engineering Frameworks</h1>
+    <p>CoE standards covering NFR requirements, development patterns, data management, testing, error handling, CI/CD pipeline governance, data governance, and AI enablement — the complete engineering foundation for the MRx platform.</p>
+  </div>
+</section>
+
+<div style="background:var(--white);border-bottom:1px solid var(--mrx-border);position:sticky;top:65px;z-index:900;">
+  <div class="page-tabs" style="max-width:1400px;margin:0 auto;">
+    <a href="#nfr"        class="page-tab">📋 NFR &amp; Standards</a>
+    <a href="#dev"        class="page-tab">⚙️ Dev Framework</a>
+    <a href="#data-mgmt"  class="page-tab">🗄️ Data Management</a>
+    <a href="#testing"    class="page-tab">🧪 Testing</a>
+    <a href="#error"      class="page-tab">🚨 Error Handling</a>
+    <a href="#cicd"       class="page-tab">🔄 CI/CD</a>
+    <a href="#governance" class="page-tab">🏛️ Data Governance</a>
+    <a href="#ai"         class="page-tab">🤖 AI Enablement</a>
+  </div>
+</div>
+
+<main class="page-content">
+
+  <!-- ─── Pillar 1: NFR ─────────────────────────────────────────────── -->
+  <section class="section-anchor" id="nfr">
+    <div class="section-title"><span class="icon icon-orange">📋</span> Pillar 1 — NFR Template &amp; Checks</div>
+    <div class="section-subtitle">Non-Functional Requirements — Enterprise Standards &amp; Compliance</div>
+
+    <div class="info-box orange" style="margin-bottom:20px;">
+      <strong>Purpose</strong>
+      The NFR framework ensures every data platform asset meets enterprise-grade non-functional standards prior to production release. All components must pass these checks as part of the CoE governance gate.
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">🏷️</div><div class="card-title">Tagging Standards</div></div>
+        <p class="card-desc" style="margin-bottom:10px;">Mandatory tags applied to <em>all</em> cloud resources and data assets:</p>
+        <ul class="styled-list">
+          <li><code>Owner</code> — responsible team or individual</li>
+          <li><code>CostCenter</code> — chargeback business unit</li>
+          <li><code>Environment</code> — prod / staging / dev</li>
+          <li><code>Application</code> — application name or code</li>
+          <li><code>DR-Tier</code> — disaster recovery classification</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Azure Policy</span><span class="tag tag-blue">Terraform Enforced</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-red">🔐</div><div class="card-title">Security Checks</div></div>
+        <ul class="styled-list">
+          <li>Pre-deployment security scans: authentication, authorisation, encryption at-rest and in-transit</li>
+          <li>Network isolation: private endpoints, VNet injection, no public IP on clusters</li>
+          <li>Wiz CSPM: no critical/high open findings before promotion</li>
+          <li>GitHub Advanced Security gate: secret scan must pass</li>
+          <li>SonarQube: 0 critical bugs, 0 vulnerabilities, >80% coverage</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">Wiz</span><span class="tag tag-blue">GHAS</span><span class="tag tag-green">SonarQube</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">⏱️</div><div class="card-title">RTO / RPO Targets</div></div>
+        <table class="data-table" style="font-size:13px;">
+          <thead><tr><th>Tier</th><th>RTO</th><th>RPO</th><th>Availability</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag tag-red">Critical</span></td><td>&lt; 1 hr</td><td>&lt; 15 min</td><td>99.95%</td></tr>
+            <tr><td><span class="tag tag-orange">High</span></td><td>&lt; 4 hr</td><td>&lt; 1 hr</td><td>99.9%</td></tr>
+            <tr><td><span class="tag tag-blue">Standard</span></td><td>&lt; 8 hr</td><td>&lt; 4 hr</td><td>99.5%</td></tr>
+            <tr><td><span class="tag tag-gray">Low</span></td><td>&lt; 24 hr</td><td>&lt; 8 hr</td><td>99%</td></tr>
+          </tbody>
+        </table>
+        <p class="card-desc" style="margin-top:8px;font-size:13px;">RTO/RPO defined per DR tier. Enforced via runbooks and tested quarterly.</p>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">🏦</div><div class="card-title">HA / DR Architecture</div></div>
+        <ul class="styled-list">
+          <li><strong>SLA Definition:</strong> Data pipeline SLAs cover freshness, 99.9% availability, and latency thresholds — tracked via observability dashboards</li>
+          <li><strong>High Availability:</strong> Multi-zone deployment, auto-scaling, and failover policies mandated for all Tier-1 workloads</li>
+          <li><strong>Disaster Recovery:</strong> DR playbooks, geo-redundant storage, and validated restore procedures for all critical datasets</li>
+          <li>DR drills conducted quarterly with documented pass/fail results</li>
+          <li>Active-passive geo-replication for Databricks workspaces on critical tiers</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">🏛️</div><div class="card-title">LeanIX &amp; CMDB Integration</div></div>
+        <table class="data-table" style="font-size:13px;">
+          <thead><tr><th>Integration Target</th><th>Requirement</th></tr></thead>
+          <tbody>
+            <tr><td><strong>LeanIX</strong></td><td>All platform components registered as IT components with business capability mapping and lifecycle status</td></tr>
+            <tr><td><strong>CMDB</strong></td><td>Automated CMDB sync for every Databricks workspace, cluster, and catalog resource</td></tr>
+            <tr><td><strong>BA Mapping</strong></td><td>Data assets linked to consuming business applications via Application Service (AS) numbers</td></tr>
+            <tr><td><strong>AS Numbers</strong></td><td>Each pipeline and dataset assigned an AS number for traceability from infrastructure to business process</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 2: Dev Framework ────────────────────────────────────── -->
+  <section class="section-anchor" id="dev">
+    <div class="section-title"><span class="icon icon-blue">⚙️</span> Pillar 2 — Development Framework</div>
+    <div class="section-subtitle">Standards for pipeline engineering, tooling, and AI-assisted development</div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">📥</div><div class="card-title">Ingestion Tools</div></div>
+        <ul class="styled-list">
+          <li><strong>Azure Data Factory (ADF)</strong> — orchestrated batch ingestion with monitoring</li>
+          <li><strong>Autoloader</strong> — incremental file ingestion with schema evolution from ADLS Gen2</li>
+          <li><strong>Kafka</strong> — event-driven streaming ingestion via Azure Event Hubs</li>
+          <li><strong>REST APIs</strong> — generic configurable HTTP source connectors</li>
+          <li>Standardized connector catalog maintained in the CoE repository</li>
+          <li><strong>Delta Live Tables (DLT)</strong> — declarative streaming pipelines with built-in quality expectations</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Autoloader</span><span class="tag tag-blue">ADF</span><span class="tag tag-gray">Kafka</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-purple">🎛️</div><div class="card-title">Config-Driven Engineering</div></div>
+        <ul class="styled-list">
+          <li>Metadata-driven pipeline patterns — data sources, transformations, and targets declared via YAML/JSON config</li>
+          <li>Zero-code duplication: new sources onboarded via config only</li>
+          <li>Dynamic job generation from metadata — no copy-paste pipeline proliferation</li>
+          <li>Environment-aware configs: dev / staging / prod parameter overrides</li>
+          <li>Config versioned in Git alongside application code</li>
+        </ul>
+        <div class="tags"><span class="tag tag-purple">Config-Driven</span><span class="tag tag-blue">Metadata</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon" style="background:#fff3cc;">🤖</div><div class="card-title">AI-Assisted Development</div></div>
+        <ul class="styled-list">
+          <li><strong>GitHub Copilot</strong> — inline code completion in VS Code and Databricks</li>
+          <li><strong>Databricks Assistant</strong> — notebook-native suggestions, query optimisation, debugging</li>
+          <li><strong>Claude (Anthropic)</strong> — complex code review, architecture analysis, long-context reasoning</li>
+          <li>AI-generated unit tests to accelerate coverage targets</li>
+          <li>Prompt templates versioned in Git; outputs logged for governance</li>
+        </ul>
+        <div class="tags"><span class="tag tag-purple">Copilot</span><span class="tag tag-blue">Databricks AI</span><span class="tag tag-teal">Claude</span></div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">🔍</div><div class="card-title">SonarQube Code Quality</div></div>
+        <ul class="styled-list">
+          <li>Static code analysis on every PR — quality gate blocks promotion on failures</li>
+          <li><strong>Gate thresholds:</strong> 0 critical bugs, 0 vulnerabilities, &gt;80% code coverage</li>
+          <li>Duplication &lt;3%, security hotspot review mandatory before merge to main</li>
+          <li>Python, SQL, and Terraform all scanned in same pipeline</li>
+          <li>SonarLint IDE plugin enabled for shift-left quality feedback</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">SonarQube</span><span class="tag tag-orange">Quality Gate</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">📦</div><div class="card-title">Reusable Libraries</div></div>
+        <ul class="styled-list">
+          <li>Shared Python/Scala libraries for transformations, schema validation, and utilities</li>
+          <li>Published to internal package registry (Azure Artifacts / GitHub Packages)</li>
+          <li>Semantic versioning; breaking changes require major version bump</li>
+          <li>Library changes require CoE review before release</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Package Registry</span><span class="tag tag-teal">Python/Scala</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">📐</div><div class="card-title">Code Standards</div></div>
+        <ul class="styled-list">
+          <li>PEP8 / Black formatting enforced via pre-commit hooks</li>
+          <li>Docstring requirements and type hints mandatory</li>
+          <li>CI pipeline checks enforce formatting and linting on every commit</li>
+          <li>ADRs (Architecture Decision Records) required for significant design decisions</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">PEP8</span><span class="tag tag-blue">Black</span><span class="tag tag-green">Type Hints</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-header"><div class="card-icon icon-teal">🎛️</div><div class="card-title">Metadata-Driven Pipeline Architecture</div></div>
+      <table class="data-table" style="margin-top:8px;">
+        <thead><tr><th>Layer</th><th>Component</th><th>Standard</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Source Config</strong></td><td>YAML / JSON metadata</td><td>Schema, partition keys, watermark columns, SLA defined per source</td></tr>
+          <tr><td><strong>Ingestion</strong></td><td>Config-driven ADF / Autoloader</td><td>Delta Live Tables for streaming; ADF copy activity for batch</td></tr>
+          <tr><td><strong>Transform</strong></td><td>PySpark / SQL templates</td><td>Medallion pattern: Bronze → Silver → Gold with lineage capture</td></tr>
+          <tr><td><strong>Output</strong></td><td>Managed Delta tables</td><td>Partitioned, optimized, and vacuumed per CoE schedule</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 3: Data Management ─────────────────────────────────── -->
+  <section class="section-anchor" id="data-mgmt">
+    <div class="section-title"><span class="icon icon-teal">🗄️</span> Pillar 3 — Data Management</div>
+    <div class="section-subtitle">Modeling standards, catalog structure, medallion architecture, and storage optimization</div>
+
+    <div class="info-box teal" style="margin-bottom:20px;">
+      <strong>Medallion Architecture</strong>
+      The CoE mandates the Medallion architecture pattern for all MRx data assets — a multi-layer strategy that incrementally improves data quality and structure as data flows from raw ingestion (Bronze) through cleansed (Silver) to business-ready (Gold).
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="layer-card" style="border-top:4px solid #cd7f32; background:#fffaf5;">
+        <div style="font-size:22px;margin-bottom:8px;">🟤</div>
+        <div style="font-size:15px;font-weight:700;color:#7a4000;margin-bottom:6px;">BRONZE — Raw Zone</div>
+        <p class="card-desc">Exact copy of source data. No transformations. Immutable append-only Delta tables. Full history retained.</p>
+        <ul class="styled-list" style="margin-top:10px;">
+          <li>Schema-on-read with Autoloader schema inference</li>
+          <li>Partition by <code>ingest_date</code> for efficient pruning</li>
+          <li>30-day retention for raw streams; 7-year for compliance datasets</li>
+          <li>No PII masking at this layer — access restricted</li>
+        </ul>
+      </div>
+      <div class="layer-card" style="border-top:4px solid #9e9e9e; background:#fafafa;">
+        <div style="font-size:22px;margin-bottom:8px;">⚪</div>
+        <div style="font-size:15px;font-weight:700;color:#555;margin-bottom:6px;">SILVER — Conformed Zone</div>
+        <p class="card-desc">Cleansed, deduplicated, typed, and enriched. Business rules applied. Standardized schema and naming.</p>
+        <ul class="styled-list" style="margin-top:10px;">
+          <li>Data quality checks applied (nulls, ranges, referential integrity)</li>
+          <li>SCD Type 2 patterns for slowly-changing dimensions</li>
+          <li>PII tokenisation and masking applied at this layer</li>
+          <li>Z-ordering on high-cardinality filter columns</li>
+        </ul>
+      </div>
+      <div class="layer-card" style="border-top:4px solid #ffd700; background:#fffef0;">
+        <div style="font-size:22px;margin-bottom:8px;">🟡</div>
+        <div style="font-size:15px;font-weight:700;color:#7a6000;margin-bottom:6px;">GOLD — Business Zone</div>
+        <p class="card-desc">Aggregated, business-specific datasets. Dimensional models and KPIs ready for analytics and ML consumption.</p>
+        <ul class="styled-list" style="margin-top:10px;">
+          <li>Optimised for read performance (BI tools, SQL analytics)</li>
+          <li>Governed via Unity Catalog with row/column-level security</li>
+          <li>Published to Alation for self-service data discovery</li>
+          <li>Every column mapped to business glossary term</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">📐</div><div class="card-title">Data Modeling</div></div>
+        <ul class="styled-list">
+          <li>Dimensional and Data Vault 2.0 patterns supported</li>
+          <li>Entity-relationship docs required for all new domains</li>
+          <li>Schema changes governed via CoE change control process</li>
+          <li>Naming convention: snake_case, domain-prefixed (e.g., <code>mrx_customer_id</code>)</li>
+          <li>Surrogate keys generated via hash (<code>md5</code>/<code>sha256</code>)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">📚</div><div class="card-title">Data Catalog Structure</div></div>
+        <ul class="styled-list">
+          <li>Unity Catalog hierarchy: <code>metastore → catalog → schema → table</code></li>
+          <li>Naming conventions enforced by CI validation</li>
+          <li>All production tables: managed Delta tables in Unity Catalog</li>
+          <li>External tables require CoE approval</li>
+          <li>Table documentation: owner, classification, PII flag, retention policy</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Unity Catalog</span><span class="tag tag-blue">Managed Tables</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">🧹</div><div class="card-title">Partitioning &amp; Vacuuming</div></div>
+        <ul class="styled-list">
+          <li><strong>Partition columns:</strong> date/event_date for time-series; geography or business key for large reference datasets</li>
+          <li><strong>OPTIMIZE:</strong> scheduled weekly — compacts small files to 128 MB targets</li>
+          <li><strong>VACUUM:</strong> 7-day default retention; 30-day for regulated datasets</li>
+          <li>Delta table statistics collected automatically for query plan optimisation</li>
+          <li>Liquid clustering evaluated for high-churn tables</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">OPTIMIZE</span><span class="tag tag-blue">VACUUM</span><span class="tag tag-teal">Delta Lake</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 4: Testing ──────────────────────────────────────────── -->
+  <section class="section-anchor" id="testing">
+    <div class="section-title"><span class="icon icon-green">🧪</span> Pillar 4 — Testing Framework</div>
+    <div class="section-subtitle">Data quality, unit testing, and validation standards for robust pipelines</div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">✅</div><div class="card-title">Data Quality Framework</div></div>
+        <ul class="styled-list">
+          <li>Great Expectations / Databricks DQ rules — expectations defined per table</li>
+          <li>Covers: completeness, uniqueness, referential integrity, freshness</li>
+          <li>DQ scores published to observability dashboards</li>
+          <li>SLA breach auto-triggers incident workflow in ServiceNow</li>
+          <li>DQ results written to <code>audit.dq_results</code> Delta table</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Great Expectations</span><span class="tag tag-blue">DLT Expectations</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-purple">🔬</div><div class="card-title">Unit Testing</div></div>
+        <ul class="styled-list">
+          <li>pytest for PySpark transformations — minimum 80% code coverage</li>
+          <li>chispa — PySpark DataFrame assertion library for Spark unit tests</li>
+          <li>Mocked data fixtures using Delta tables in test catalogs</li>
+          <li>Tests run in isolated Databricks test cluster via GitHub Actions</li>
+          <li>AI-generated test scaffolding via GitHub Copilot</li>
+        </ul>
+        <div class="tags"><span class="tag tag-purple">pytest</span><span class="tag tag-blue">chispa</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">🔄</div><div class="card-title">Integration Testing &amp; Contracts</div></div>
+        <ul class="styled-list">
+          <li>End-to-end pipeline tests in isolated sandbox environments</li>
+          <li>Data contracts validated between Bronze → Silver → Gold layers</li>
+          <li>Schema evolution checks on every run — breaking changes blocked by CI gate</li>
+          <li>Additive changes (new columns) auto-approved</li>
+          <li>Synthetic datasets for testing — PII anonymised via masking policies</li>
+          <li>Separate test catalog in Unity Catalog for isolated test data</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Integration Tests</span><span class="tag tag-teal">Schema Validation</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:0;">
+      <div class="card-header"><div class="card-icon icon-green">📊</div><div class="card-title">9 Data Quality Dimensions</div></div>
+      <div class="dq-dim-grid" style="margin-top:12px;">
+        <div class="dq-dim">✔️ Completeness</div>
+        <div class="dq-dim">🔁 Uniqueness</div>
+        <div class="dq-dim">🎯 Accuracy</div>
+        <div class="dq-dim">📅 Timeliness</div>
+        <div class="dq-dim">🔗 Referential Integrity</div>
+        <div class="dq-dim">📐 Conformity</div>
+        <div class="dq-dim">🧩 Consistency</div>
+        <div class="dq-dim">✅ Validity</div>
+        <div class="dq-dim">🌐 Availability</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 5: Error Handling ──────────────────────────────────── -->
+  <section class="section-anchor" id="error">
+    <div class="section-title"><span class="icon icon-red">🚨</span> Pillar 5 — Error Handling Framework</div>
+    <div class="section-subtitle">Audit logs, exception management, alerting, and operational visibility</div>
+
+    <div class="grid-3" style="margin-bottom:16px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">📋</div><div class="card-title">Audit Logs</div></div>
+        <ul class="styled-list">
+          <li>All pipeline executions logged: start/end time, record counts, schema, user, job ID</li>
+          <li>Stored in Unity Catalog <code>audit</code> schema — immutable append-only Delta table</li>
+          <li><strong>Retention:</strong> 90 days operational; 7 years for SOX compliance datasets</li>
+          <li>Accessible via Databricks SQL and Grafana audit dashboard</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">⚠️</div><div class="card-title">Exception Logs</div></div>
+        <ul class="styled-list">
+          <li>Structured exception capture: error type, severity, affected records, stack trace</li>
+          <li>Written to dedicated exception Delta table per pipeline</li>
+          <li>Dead-letter tables for unresolvable records — quarantined for investigation</li>
+          <li><strong>Retention:</strong> 180 days</li>
+          <li>Exception records linked to source row identifier for lineage tracing</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-red">📣</div><div class="card-title">Alerting Framework</div></div>
+        <ul class="styled-list">
+          <li>Azure Monitor + Grafana alerts with configurable thresholds</li>
+          <li>Alert triggers: p99 latency, failure rate, row count anomaly, DQ score drop</li>
+          <li>Routed to Slack, email, and PagerDuty by severity</li>
+          <li>Automated error reports generated daily for critical failures</li>
+          <li>SLA breaches escalated to team lead automatically</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Azure Monitor</span><span class="tag tag-red">PagerDuty</span><span class="tag tag-teal">Grafana</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:0;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">🔍</div><div class="card-title">Root Cause Tooling</div></div>
+        <ul class="styled-list">
+          <li>Grafana for log correlation across Databricks, ADF, and storage</li>
+          <li>Azure Application Insights for distributed tracing with correlation IDs propagated through all pipeline hops</li>
+          <li>End-to-end visibility from data source through to Gold layer output</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-purple">🔁</div><div class="card-title">Retry Policies &amp; Alert Severity</div></div>
+        <ul class="styled-list">
+          <li>Configurable retry with exponential backoff — max 3 retries for transient failures</li>
+          <li><strong>P1:</strong> Pipeline down &gt;15 min → immediate PagerDuty page</li>
+          <li><strong>P2:</strong> DQ failure → team lead notification</li>
+          <li><strong>P3:</strong> Latency breach → email alert</li>
+          <li><strong>P4:</strong> Warning → Slack channel notification</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 6: CI/CD ────────────────────────────────────────────── -->
+  <section class="section-anchor" id="cicd">
+    <div class="section-title"><span class="icon icon-purple">🔄</span> Pillar 6 — CI/CD Framework</div>
+    <div class="section-subtitle">Automated delivery, release management, and deployment governance</div>
+
+    <div class="info-box blue" style="margin-bottom:20px;">
+      <strong>GitOps Model</strong>
+      All MRx platform changes follow a GitOps model — the Git repository is the single source of truth for both application code and infrastructure configuration. Deployments are triggered exclusively through GitHub Actions / Azure Pipelines with mandatory approval gates.
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">📦</div><div class="card-title">Databricks Asset Bundles</div></div>
+        <ul class="styled-list">
+          <li>DABs package jobs, workflows, notebooks, and DLT pipelines as a single deployable unit</li>
+          <li>Bundle definitions in <code>databricks.yml</code> — versioned alongside code</li>
+          <li>Environment targets: <code>dev → staging → prod</code> with variable overrides</li>
+          <li>Bundle validation in PR checks before merge</li>
+          <li>Rollback via previous bundle version re-deployment</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">DAB</span><span class="tag tag-teal">GitOps</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">🗂️</div><div class="card-title">Git Repository Strategy</div></div>
+        <ul class="styled-list">
+          <li>Branch strategy: <code>main → release → feature</code> (trunk-based development)</li>
+          <li>PR required for all changes — auto-merge blocked without approvals</li>
+          <li>Signed commits enforced for merges to <code>main</code></li>
+          <li>Semantic versioning (<code>vMAJOR.MINOR.PATCH</code>) for all release tags</li>
+          <li>Azure DevOps / GitHub — repo settings enforced via Terraform</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">GitHub</span><span class="tag tag-blue">Trunk-Based</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">🚀</div><div class="card-title">Workflow Stages</div></div>
+        <div style="overflow:auto;">
+          <table class="data-table" style="font-size:13px;margin-top:4px;">
+            <thead><tr><th>Step</th><th>Action</th><th>Gate</th></tr></thead>
+            <tbody>
+              <tr><td>1 Code Commit</td><td>Lint, pre-commit hooks</td><td>Auto</td></tr>
+              <tr><td>2 CI Build &amp; Test</td><td>Unit tests, SonarQube</td><td>Auto</td></tr>
+              <tr><td>3 Quality Gate</td><td>Coverage, vulnerabilities</td><td>Auto</td></tr>
+              <tr><td>4 Approval Gateway</td><td>Tech Lead + QA sign-off</td><td><strong>Manual</strong></td></tr>
+              <tr><td>5 Deploy Prod</td><td>Bundle deploy, smoke tests</td><td><strong>Manual</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-header"><div class="card-icon" style="background:#fff3cc;">🚩</div><div class="card-title">Feature Flags</div></div>
+        <ul class="styled-list">
+          <li>LaunchDarkly / custom config flags for progressive feature rollouts</li>
+          <li>Canary deployments for high-risk pipeline changes</li>
+          <li>Azure App Configuration as centralised flag store — no code deploy needed to toggle</li>
+          <li>Kill-switch flags for instant feature disablement in production incidents</li>
+          <li>Flag lifecycle managed: Temporary (gradual rollout) vs Permanent (ops control)</li>
+        </ul>
+        <div class="tags"><span class="tag tag-yellow" style="background:#fff3cc;color:#7a5c00;">Feature Flags</span><span class="tag tag-blue">Canary</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">✅</div><div class="card-title">Approval Gateway &amp; Release Management</div></div>
+        <ul class="styled-list">
+          <li><strong>Production deployments require:</strong> Tech Lead approval + QA sign-off + CoE review for schema changes</li>
+          <li>Automated via GitHub PR workflows and GitHub Environments</li>
+          <li>Change Advisory Board (CAB) notification for Tier-1 pipelines</li>
+          <li>Rollback plan mandatory per deployment — documented before release</li>
+          <li>ServiceNow Change Request auto-created on prod deployment trigger</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Approval Gate</span><span class="tag tag-blue">ServiceNow</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 7: Data Governance ─────────────────────────────────── -->
+  <section class="section-anchor" id="governance">
+    <div class="section-title"><span class="icon icon-teal">🏛️</span> Pillar 7 — Data Governance</div>
+    <div class="section-subtitle">Lineage, definitions, glossary, and Alation integration</div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">🔗</div><div class="card-title">Lineage Extraction</div></div>
+        <ul class="styled-list">
+          <li>Automated lineage via Unity Catalog system tables — column-level for regulated datasets</li>
+          <li>Alation integration: lineage exported via Alation Open Connector Framework (OCF)</li>
+          <li>Impact analysis: identify downstream datasets affected by upstream schema change</li>
+          <li>OpenLineage / Marquez for cross-system lineage federation</li>
+          <li>Lineage data retained for 12 months for compliance inquiries</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Unity Catalog</span><span class="tag tag-teal">OpenLineage</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">📚</div><div class="card-title">Alation Integration</div></div>
+        <ul class="styled-list">
+          <li>Unity Catalog metadata synced to Alation nightly</li>
+          <li>Data stewards manage trust flags, certifications, and query governance in Alation</li>
+          <li>Trust flags: Certified, Warning, Deprecated applied by domain stewards</li>
+          <li>Usage analytics surfaced: query frequency, top users per dataset</li>
+          <li>Alation search enables self-service data discovery across all Gold tables</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Alation</span><span class="tag tag-blue">Nightly Sync</span></div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">📋</div><div class="card-title">Table &amp; View Definitions</div></div>
+        <ul class="styled-list">
+          <li>All production tables require: description, owner, data classification, PII flag, and retention policy</li>
+          <li>Column-level documentation: business definition, data type, valid values</li>
+          <li>Breaking schema changes require governance approval before merging</li>
+          <li>Deprecation notices published 30 days before table retirement</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-purple">📖</div><div class="card-title">Business Data Glossary</div></div>
+        <ul class="styled-list">
+          <li>Business terms maintained in Alation — every Gold-layer column mapped to a glossary term</li>
+          <li>Approved by Data Stewards; conflicting definitions arbitrated by Data Governance Council</li>
+          <li>Standard definitions for: Customer, Engagement, Product, Revenue, Research Output</li>
+          <li>Glossary versioned — change history tracked with effective dates</li>
+        </ul>
+        <div class="tags"><span class="tag tag-purple">Glossary</span><span class="tag tag-teal">Stewardship</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">��️</div><div class="card-title">Data Classification</div></div>
+        <ul class="styled-list">
+          <li>4-tier classification: <strong>Public → Internal → Confidential → Restricted</strong></li>
+          <li>Column-level tags applied via Unity Catalog attribute policies</li>
+          <li>Data Domain Owners &amp; Stewards assigned per business domain</li>
+          <li>Accountable for quality, definitions, and access governance</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">Restricted</span><span class="tag tag-orange">Confidential</span><span class="tag tag-blue">Internal</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon icon-teal">🔗</div><div class="card-title">Governance Integration Map</div></div>
+      <table class="data-table" style="margin-top:8px;">
+        <thead><tr><th>Tool / System</th><th>Capability</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Unity Catalog</strong></td><td>Schema registry, access control, tags, lineage</td><td>Real-time</td></tr>
+          <tr><td><strong>Alation</strong></td><td>Business glossary, trust scores, certification, search</td><td>Nightly sync</td></tr>
+          <tr><td><strong>LeanIX</strong></td><td>IT component registry, business capability mapping</td><td>Weekly</td></tr>
+          <tr><td><strong>CMDB</strong></td><td>Infrastructure CI records, application mapping</td><td>On-deploy</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 13: AI Enablement ──────────────────────────────────── -->
+  <section class="section-anchor" id="ai">
+    <div class="section-title"><span class="icon icon-purple">🤖</span> Pillar 13 — AI Enablement</div>
+    <div class="section-subtitle">AI tools, assistants, and intelligent development acceleration across the MRx engineering lifecycle</div>
+
+    <div class="info-box blue" style="margin-bottom:20px;">
+      <strong>AI-Augmented Engineering</strong>
+      The CoE drives AI adoption across the data engineering lifecycle — from code generation and review to intelligent pipeline monitoring and natural language data exploration. All AI tools must comply with McKesson data privacy and IP policies.
+    </div>
+
+    <div class="ai-status-grid">
+      <div class="ai-status-badge" style="background:#e8f5ee;border:1px solid #00965e;">
+        <div style="font-size:18px;margin-bottom:6px;">🟢</div>
+        <div style="font-size:13px;font-weight:700;color:#1a5c3a;margin-bottom:4px;">LIVE</div>
+        <div style="font-size:12px;color:#2e7d52;">GitHub Copilot · Databricks Assistant · Azure OpenAI</div>
+      </div>
+      <div class="ai-status-badge" style="background:#fff9e0;border:1px solid #ffd700;">
+        <div style="font-size:18px;margin-bottom:6px;">🟡</div>
+        <div style="font-size:13px;font-weight:700;color:#7a6000;margin-bottom:4px;">PILOTING</div>
+        <div style="font-size:12px;color:#7a6000;">Claude (MCP) · MCP Servers</div>
+      </div>
+      <div class="ai-status-badge" style="background:#e8f4fd;border:1px solid #1a7abf;">
+        <div style="font-size:18px;margin-bottom:6px;">🔵</div>
+        <div style="font-size:13px;font-weight:700;color:#0d4e8a;margin-bottom:4px;">PLANNED</div>
+        <div style="font-size:12px;color:#0d4e8a;">OpenAI API · Internal AI Gateway</div>
+      </div>
+      <div class="ai-status-badge" style="background:#f0f0f0;border:1px solid #ccc;">
+        <div style="font-size:18px;margin-bottom:6px;">⚪</div>
+        <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:4px;">EVALUATING</div>
+        <div style="font-size:12px;color:#555;">Windsurf IDE · Custom LLM fine-tuning</div>
+      </div>
+    </div>
+
+    <div class="ai-tool-grid" style="margin-top:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon" style="background:#f0e8ff;">🧠</div><div class="card-title">OpenAI / Azure OpenAI</div></div>
+        <ul class="styled-list">
+          <li>Azure OpenAI Service for enterprise-grade, compliant LLM access</li>
+          <li>GPT-4 APIs for natural language interfaces, data summarization, anomaly explanation, and automated documentation</li>
+          <li>Embedding models for semantic search and research clustering</li>
+          <li>Guardrails: no customer PII sent to OpenAI endpoints</li>
+          <li>Rate limiting and usage tracking per team/project</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">🟢 Live</span><span class="tag tag-purple">Azure OpenAI</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon" style="background:#fff3cc;">🐙</div><div class="card-title">GitHub Copilot</div></div>
+        <ul class="styled-list">
+          <li>AI pair programmer embedded in VS Code and Databricks — reduces boilerplate, accelerates test generation</li>
+          <li>Copilot Chat for PR review assistance and documentation generation</li>
+          <li>Copilot Enterprise: organisation-wide licence for all MRx engineers</li>
+          <li>Configured to exclude IP from model training (McKesson policy)</li>
+          <li>Adoption rate and accepted suggestion rate tracked per team</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">🟢 Live</span><span class="tag tag-blue">Copilot</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon" style="background:#fdecea;">⚡</div><div class="card-title">Claude (Anthropic)</div></div>
+        <ul class="styled-list">
+          <li>Integrated for complex code review, architecture analysis, and documentation drafting</li>
+          <li>Long-context data schema reasoning — ideal for large codebase refactoring</li>
+          <li>Available via GitHub Copilot and MCP server integrations</li>
+          <li>Prompt templates versioned and peer-reviewed in CoE library</li>
+        </ul>
+        <div class="tags"><span class="tag tag-yellow" style="background:#fff9e0;color:#7a6000;">🟡 Piloting</span><span class="tag tag-orange">Claude</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">🔌</div><div class="card-title">MCP Servers</div></div>
+        <ul class="styled-list">
+          <li>Model Context Protocol servers connecting AI assistants to internal tools</li>
+          <li><strong>Unity Catalog MCP:</strong> AI queries tables, checks lineage, browses glossary</li>
+          <li><strong>Jira MCP:</strong> AI creates stories, reads sprint state, links incidents</li>
+          <li><strong>ServiceNow MCP:</strong> AI creates incidents and change requests</li>
+          <li>MCP servers deployed as containerised services on AKS</li>
+        </ul>
+        <div class="tags"><span class="tag tag-yellow" style="background:#fff9e0;color:#7a6000;">🟡 Piloting</span><span class="tag tag-teal">MCP</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">🧩</div><div class="card-title">Databricks Assistant</div></div>
+        <ul class="styled-list">
+          <li>Native AI assistant within Databricks notebooks and SQL editor</li>
+          <li>Context-aware: understands Unity Catalog schema and cluster state</li>
+          <li>Generates Spark/SQL code, explains errors, suggests optimisations</li>
+          <li>AI-powered search across notebooks and Delta tables in workspace</li>
+          <li>Integrated with Databricks Mosaic AI for custom model serving</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">🟢 Live</span><span class="tag tag-blue">Databricks AI</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon" style="background:#e6f9f0;">🌊</div><div class="card-title">Windsurf (TBD)</div></div>
+        <ul class="styled-list">
+          <li>AI-first development environment from Codeium — under evaluation</li>
+          <li>Cascade AI agent: multi-file, multi-step code changes guided by natural language</li>
+          <li>Deep codebase understanding via repository-level context indexing</li>
+          <li>PoC planned for Q3 2026 with data engineering team</li>
+          <li>Evaluation criteria: McKesson data policy compliance, security review</li>
+        </ul>
+        <div class="tags"><span class="tag tag-gray">⚪ Evaluating</span><span class="tag tag-green">Q3 2026 PoC</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-purple">🗺️</div><div class="card-title">AI Tool Adoption Roadmap</div></div>
+        <div style="display:flex;gap:0;margin-top:10px;overflow:hidden;border-radius:8px;border:1px solid var(--mrx-border);">
+          <div style="flex:1;background:#e8f5ee;padding:16px;border-right:1px solid var(--mrx-border);">
+            <div style="font-size:11px;font-weight:700;color:#1a5c3a;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">🟢 Now — Live</div>
+            <ul class="styled-list"><li>GitHub Copilot (Enterprise)</li><li>Databricks AI Assistant</li><li>Azure OpenAI (GPT-4)</li></ul>
+          </div>
+          <div style="flex:1;background:#fff9e0;padding:16px;border-right:1px solid var(--mrx-border);">
+            <div style="font-size:11px;font-weight:700;color:#7a6000;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">🟡 H1 2026 — Piloting</div>
+            <ul class="styled-list"><li>Claude via MCP Servers</li><li>Unity Catalog MCP</li><li>Jira + ServiceNow MCP</li></ul>
+          </div>
+          <div style="flex:1;background:#e8f4fd;padding:16px;border-right:1px solid var(--mrx-border);">
+            <div style="font-size:11px;font-weight:700;color:#0d4e8a;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">🔵 H2 2026 — Planned</div>
+            <ul class="styled-list"><li>Internal AI Gateway</li><li>OpenAI API (broader rollout)</li><li>Custom prompt libraries</li></ul>
+          </div>
+          <div style="flex:1;background:#f0f0f0;padding:16px;">
+            <div style="font-size:11px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;">⚪ 2027 — Evaluating</div>
+            <ul class="styled-list"><li>Windsurf IDE</li><li>Custom LLM fine-tuning</li><li>AI-native data cataloging</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div><strong>MRx Nexus</strong> &nbsp;·&nbsp; Data &amp; AI Center of Excellence &nbsp;·&nbsp; Enterprise Standards v1.0 &nbsp;·&nbsp; March 2026</div>
+  <div>MomentimRx &nbsp;|&nbsp; © 2025 McKesson Corporation &nbsp;|&nbsp; McKesson Proprietary and Confidential</div>
+</footer>
+
+<script>
+var sections = document.querySelectorAll('.section-anchor');
+var tabs = document.querySelectorAll('.page-tab');
+window.addEventListener('scroll', function() {
+  var scrollPos = window.scrollY + 140;
+  sections.forEach(function(s) {
+    if (s.offsetTop <= scrollPos && s.offsetTop + s.offsetHeight > scrollPos) {
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      var at = document.querySelector('.page-tab[href="#'+s.getAttribute('id')+'"]');
+      if (at) at.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>

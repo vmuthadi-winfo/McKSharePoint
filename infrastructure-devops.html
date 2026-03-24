@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRx Nexus | Infrastructure &amp; DevOps</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    code { background:#f0f4f8; border-radius:4px; padding:1px 6px; font-size:12px; color:#c0392b; font-family:'Courier New',monospace; }
+    .infra-tag-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    @media(max-width:700px){ .infra-tag-grid { grid-template-columns:1fr 1fr; } }
+    .infra-tag-box { background:var(--mrx-gray-light); border-radius:8px; padding:12px 14px; font-size:13px; font-weight:600; color:var(--mrx-blue); text-align:center; }
+    .kpi-table-wrap { overflow-x:auto; }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-logo">MRx</div>
+      <div>
+        <span class="nav-brand-text">MRx Nexus</span>
+        <span class="nav-brand-sub">Data &amp; AI CoE · MomentimRx</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="data-ai.html">📊 Data &amp; AI</a></li>
+      <li><a href="infrastructure-devops.html" class="active">⚙️ Infrastructure &amp; DevOps</a></li>
+      <li><a href="security.html">🔒 Security</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="index.html">MRx Nexus CoE</a><span class="sep">›</span><strong>Infrastructure &amp; DevOps</strong>
+  </div>
+</div>
+
+<section class="page-hero" style="background:linear-gradient(135deg,#003d38 0%,#005755 55%,#00a9a5 100%);">
+  <div class="page-hero-inner">
+    <div class="hero-badge" style="background:rgba(0,169,165,0.25);border-color:rgba(0,169,165,0.5);color:#a0ece9;">Pillars 8–11 · Enterprise Standards v1.0</div>
+    <h1>Infrastructure &amp; DevOps</h1>
+    <p>Terraform-managed Azure infrastructure, operational readiness frameworks, FinOps cost management, and full-stack platform observability — the engineering backbone of the MRx data platform.</p>
+  </div>
+</section>
+
+<div style="background:var(--white);border-bottom:1px solid var(--mrx-border);position:sticky;top:65px;z-index:900;">
+  <div class="page-tabs" style="max-width:1400px;margin:0 auto;">
+    <a href="#infrastructure" class="page-tab">🏗️ Infrastructure</a>
+    <a href="#ops-readiness"  class="page-tab">🔧 Ops Readiness</a>
+    <a href="#cost"           class="page-tab">💰 Cost Avoidance</a>
+    <a href="#observability"  class="page-tab">📊 Observability</a>
+  </div>
+</div>
+
+<main class="page-content">
+
+  <!-- ─── Pillar 9: Infrastructure ─────────────────────────────────── -->
+  <section class="section-anchor" id="infrastructure">
+    <div class="section-title"><span class="icon icon-teal">🏗️</span> Pillar 9 — Infrastructure</div>
+    <div class="section-subtitle">Terraform-managed deployments, compute governance, and optimization</div>
+
+    <div class="info-box teal" style="margin-bottom:20px;">
+      <strong>Infrastructure-as-Code First</strong>
+      All MRx infrastructure is defined, versioned, and deployed exclusively via Terraform. No manual Azure portal changes are permitted in staging or production environments. Every resource is created from code — ensuring full reproducibility and auditability.
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">🌍</div><div class="card-title">Terraform IaC</div></div>
+        <ul class="styled-list">
+          <li>All infrastructure provisioned via Terraform — Databricks workspaces, Unity Catalog, network, and storage managed as IaC in Git</li>
+          <li>Modular architecture: reusable modules for each Azure service type</li>
+          <li>Internal module registry enforcing approved patterns</li>
+          <li>Terraform plans reviewed as part of PR checks before apply</li>
+          <li><strong>Drift detection:</strong> scheduled <code>terraform plan</code> runs detect manual changes</li>
+          <li>State locking prevents concurrent modifications</li>
+          <li>Workspace-per-environment isolation: dev / staging / prod state files separate</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Terraform</span><span class="tag tag-blue">Azure</span><span class="tag tag-green">IaC</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">🏷️</div><div class="card-title">Resource Tagging Policy</div></div>
+        <p class="card-desc" style="margin-bottom:12px;">Resource tags applied via Terraform and enforced by Azure Policy. All tags mandatory — provisioning blocked on missing tags:</p>
+        <div class="infra-tag-grid">
+          <div class="infra-tag-box">Environment<br><small style="font-weight:400;color:var(--text-secondary);">prod / staging / dev</small></div>
+          <div class="infra-tag-box">Owner<br><small style="font-weight:400;color:var(--text-secondary);">responsible team</small></div>
+          <div class="infra-tag-box">CostCenter<br><small style="font-weight:400;color:var(--text-secondary);">chargeback unit</small></div>
+          <div class="infra-tag-box">Project<br><small style="font-weight:400;color:var(--text-secondary);">project code</small></div>
+          <div class="infra-tag-box">DR-Tier<br><small style="font-weight:400;color:var(--text-secondary);">1 / 2 / 3</small></div>
+          <div class="infra-tag-box">Application<br><small style="font-weight:400;color:var(--text-secondary);">app name</small></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-purple">💻</div><div class="card-title">Compute Policies</div></div>
+        <ul class="styled-list">
+          <li>Cluster policies enforced via Databricks — engineers select from approved policy catalogue</li>
+          <li><strong>Job clusters:</strong> auto-terminated on completion — no idle compute</li>
+          <li><strong>Interactive clusters:</strong> auto-termination after 30 min inactivity</li>
+          <li>Maximum cluster size caps enforced per environment tier</li>
+          <li>Spot instance ratio ≥70% for non-critical batch jobs</li>
+          <li>GPU cluster policies restricted to approved AI/ML workload groups</li>
+        </ul>
+        <div class="tags"><span class="tag tag-purple">Cluster Policies</span><span class="tag tag-blue">Databricks</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">📐</div><div class="card-title">Cluster Resizing</div></div>
+        <ul class="styled-list">
+          <li><strong>Autoscaling:</strong> min/max worker config based on SLA tier — enabled by default</li>
+          <li><strong>Enhanced Autoscaling:</strong> Photon-enabled clusters use predictive scale-up</li>
+          <li>Job clusters sized per workload profile in CoE sizing runbook</li>
+          <li>Instance pools for low-latency cluster start on streaming workloads</li>
+          <li>Right-sizing reviews scheduled quarterly — advisor recommendations actioned</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">Autoscaling</span><span class="tag tag-teal">Photon</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">⚡</div><div class="card-title">Compute Optimization</div></div>
+        <ul class="styled-list">
+          <li><strong>Photon runtime</strong> — enabled for all SQL workloads: 2–5× performance gains</li>
+          <li><strong>Delta caching</strong> — enabled for data lake clusters to reduce IOPS</li>
+          <li><strong>Predictive Optimization</strong> — enabled for high-read tables</li>
+          <li>Spot instances for non-critical batch pipelines</li>
+          <li>Adaptive Query Execution (AQE) enabled globally</li>
+          <li>Serverless SQL Warehouses for BI — scale to zero between queries</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Photon</span><span class="tag tag-blue">Serverless</span><span class="tag tag-teal">Delta Cache</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon icon-blue">🔒</div><div class="card-title">Network Security Architecture</div></div>
+      <div class="grid-3" style="margin-top:12px;gap:12px;">
+        <div>
+          <p style="font-size:13px;font-weight:700;color:var(--mrx-blue);margin-bottom:6px;">VNet Injection</p>
+          <p class="card-desc">All Databricks workspaces deployed in customer-managed VNets. No public IP on cluster nodes.</p>
+        </div>
+        <div>
+          <p style="font-size:13px;font-weight:700;color:var(--mrx-blue);margin-bottom:6px;">Private Endpoints</p>
+          <p class="card-desc">Private endpoints for ADLS Gen2, Key Vault, ACR, and Databricks control plane. Hub-spoke network topology.</p>
+        </div>
+        <div>
+          <p style="font-size:13px;font-weight:700;color:var(--mrx-blue);margin-bottom:6px;">Service Endpoints &amp; NSGs</p>
+          <p class="card-desc">Network Security Groups with deny-all default. Azure Firewall with FQDN-based outbound allowlisting.</p>
+        </div>
+      </div>
+      <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;">
+        <span class="tag tag-teal">Private Endpoints</span><span class="tag tag-blue">VNet Injection</span><span class="tag tag-orange">NSG</span><span class="tag tag-green">Azure Firewall</span><span class="tag tag-purple">Hub-Spoke</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 8: Ops Readiness ───────────────────────────────────── -->
+  <section class="section-anchor" id="ops-readiness">
+    <div class="section-title"><span class="icon icon-orange">🔧</span> Pillar 8 — Ops Readiness Framework</div>
+    <div class="section-subtitle">Change management, incident management, compliance, and service integration</div>
+
+    <div class="info-box orange" style="margin-bottom:20px;">
+      <strong>Production Readiness Gate</strong>
+      Before any new service or pipeline is promoted to production, it must pass the MRx CoE Ops Readiness Review — a cross-functional review ensuring operational, compliance, and support requirements are met before go-live.
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">📝</div><div class="card-title">Change Management</div></div>
+        <ul class="styled-list">
+          <li>All production changes submitted as RFCs in <strong>ServiceNow</strong></li>
+          <li>Change types: Standard (pre-approved), Normal (reviewed), Emergency</li>
+          <li>CAB approval for Tier-1 pipeline changes — weekly CAB meeting</li>
+          <li>Automated CR creation triggered by GitHub Actions on prod deploy</li>
+          <li>Post-implementation review (PIR) mandatory for Normal and Emergency changes</li>
+          <li>Change success rate and MTTR tracked on monthly ops dashboard</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">ServiceNow</span><span class="tag tag-blue">CAB</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-red">🚒</div><div class="card-title">Incident Management</div></div>
+        <ul class="styled-list">
+          <li>Incidents managed in <strong>ServiceNow ITSM</strong> with defined priority matrix</li>
+          <li>Auto-incident creation on critical alert from Azure Monitor / Grafana</li>
+          <li>Runbooks linked to each incident template in ServiceNow</li>
+          <li>PagerDuty escalation policies configured per service tier</li>
+          <li>Blameless post-mortems within 5 business days of P1/P2 closure</li>
+        </ul>
+        <table class="data-table" style="font-size:12px;margin-top:10px;">
+          <thead><tr><th>Priority</th><th>Acknowledge</th><th>Resolve</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag tag-red">P1</span></td><td>15 min</td><td>4 hr</td></tr>
+            <tr><td><span class="tag tag-orange">P2</span></td><td>1 hr</td><td>8 hr</td></tr>
+            <tr><td><span class="tag tag-blue">P3</span></td><td>4 hr</td><td>24 hr</td></tr>
+          </tbody>
+        </table>
+        <div class="tags" style="margin-top:10px;"><span class="tag tag-red">PagerDuty</span><span class="tag tag-orange">ServiceNow</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">👥</div><div class="card-title">Assignment Groups</div></div>
+        <p class="card-desc" style="margin-bottom:10px;">ServiceNow assignment groups defined per platform domain — escalation paths defined with on-call roster integrated with PagerDuty:</p>
+        <table class="data-table" style="font-size:12px;">
+          <thead><tr><th>Group</th><th>Responsibility</th></tr></thead>
+          <tbody>
+            <tr><td>Data Platform L1</td><td>First-line triage &amp; monitoring alerts</td></tr>
+            <tr><td>Data Platform L2</td><td>Pipeline failures, data issues</td></tr>
+            <tr><td>MRx Infra L2</td><td>Compute, networking, storage</td></tr>
+            <tr><td>MRx Security L2</td><td>Security incidents, access issues</td></tr>
+            <tr><td>MRx Governance</td><td>Data quality, catalog, lineage</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">📋</div><div class="card-title">Jira Integration</div></div>
+        <ul class="styled-list">
+          <li>Development work tracked in Jira — Epic → Story → Task hierarchy</li>
+          <li>2-week sprint cadence with planning, review, and retrospective ceremonies</li>
+          <li>Sprint velocity tracked; ServiceNow incidents linked to Jira bugs automatically</li>
+          <li>Epics map to platform roadmap themes — linked to LeanIX strategic initiatives</li>
+          <li>Jira roadmap published monthly to stakeholders for transparency</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Jira</span><span class="tag tag-teal">Agile</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-purple">🏛️</div><div class="card-title">SOX / SOC Auditing</div></div>
+        <ul class="styled-list">
+          <li>MRx systems in scope for SOX IT General Controls (ITGC)</li>
+          <li><strong>Access controls:</strong> quarterly access reviews against principle of least privilege</li>
+          <li><strong>Change management:</strong> all production changes traceable to approved CRs</li>
+          <li><strong>Audit logging:</strong> immutable audit trail retained 7 years</li>
+          <li>SOC 2 Type II — controls evidence collected quarterly for annual audit</li>
+          <li>Automated compliance checks via Azure Policy and Defender for Cloud</li>
+        </ul>
+        <div class="tags"><span class="tag tag-red">SOX</span><span class="tag tag-orange">SOC 2</span><span class="tag tag-blue">ITGC</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 10: Cost Avoidance ─────────────────────────────────── -->
+  <section class="section-anchor" id="cost">
+    <div class="section-title"><span class="icon icon-green">💰</span> Pillar 10 — Cost Avoidance &amp; FinOps</div>
+    <div class="section-subtitle">FinOps practices, cost monitoring, and optimization strategies</div>
+
+    <div class="info-box green" style="margin-bottom:20px;">
+      <strong>Target KPI</strong>
+      Achieve <strong>20% year-on-year unit cost reduction per DBU consumed</strong> through optimization, caching, and right-sizing initiatives. Cost is a first-class engineering concern — tracked alongside reliability and quality.
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">📊</div><div class="card-title">FinOps Monitoring</div></div>
+        <ul class="styled-list">
+          <li><strong>Azure Cost Management + Billing</strong> — primary FinOps tooling for Azure spend</li>
+          <li>Databricks Cost Dashboard — DBU consumption tracking per workspace and cluster</li>
+          <li>Weekly cost reports by team, workspace, and cluster</li>
+          <li>Cost anomaly detection: &gt;20% week-on-week increase triggers review</li>
+          <li>Budget alerts at 80% and 100% of monthly target</li>
+          <li>Monthly FinOps review embedded in ops review meeting agenda</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">Azure Cost Mgmt</span><span class="tag tag-blue">FinOps</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">🎯</div><div class="card-title">Chargeback Model</div></div>
+        <ul class="styled-list">
+          <li>DBU consumption and storage costs allocated to business units via CostCenter tagging</li>
+          <li>Monthly showback reports distributed to domain owners</li>
+          <li>Chargeback model drives accountability — teams own their cost consumption</li>
+          <li>Infracost integrated into GitHub Actions to show per-PR infrastructure cost delta</li>
+          <li>New workloads require cost estimate sign-off before provisioning</li>
+        </ul>
+        <div class="tags"><span class="tag tag-teal">Chargeback</span><span class="tag tag-orange">Infracost</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">📉</div><div class="card-title">Waste Elimination</div></div>
+        <ul class="styled-list">
+          <li>Orphaned clusters, unused volumes, and stale checkpoints identified weekly via automation</li>
+          <li>Removal requires owner confirmation to prevent accidental deletion</li>
+          <li>Storage tiering: Hot → Cool → Archive based on access frequency</li>
+          <li>Lifecycle policies automated — estimated 40% storage cost reduction</li>
+          <li>Quarterly unused resource audit with mandatory cleanup sprint</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Auto-Terminate</span><span class="tag tag-blue">Storage Tiering</span></div>
+      </div>
+    </div>
+
+    <div class="grid-4" style="margin-bottom:20px;">
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mrx-green);">≥70%</div>
+        <div class="stat-label">Spot instance ratio for batch workloads</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mrx-teal);">30 min</div>
+        <div class="stat-label">Interactive cluster auto-termination idle threshold</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mrx-blue);">20% YoY</div>
+        <div class="stat-label">Target unit cost reduction per DBU consumed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" style="color:var(--mrx-orange);">40%</div>
+        <div class="stat-label">Estimated storage cost reduction via lifecycle tiering</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon icon-green">🔍</div><div class="card-title">Optimization Review Cadence</div></div>
+      <table class="data-table" style="margin-top:8px;">
+        <thead><tr><th>Activity</th><th>Cadence</th><th>Owner</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>FinOps Review Meeting</td><td>Monthly</td><td>Platform Lead + Domain Leads</td><td>Top 10 cost drivers actioned</td></tr>
+          <tr><td>Right-Sizing Review</td><td>Quarterly</td><td>Infra Team</td><td>Cluster advisor recommendations actioned within 2 sprints</td></tr>
+          <tr><td>Storage Audit</td><td>Quarterly</td><td>Data Engineering</td><td>Orphaned objects removed, lifecycle policies updated</td></tr>
+          <tr><td>Reserved Instance Review</td><td>Annual</td><td>Cloud FinOps</td><td>1-yr RI coverage for baseline compute renewed</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- ─── Pillar 11: Observability ──────────────────────────────────── -->
+  <section class="section-anchor" id="observability">
+    <div class="section-title"><span class="icon icon-blue">📊</span> Pillar 11 — Platform Observability</div>
+    <div class="section-subtitle">Monitoring, dashboards, and alerting across the data platform</div>
+
+    <div class="info-box blue" style="margin-bottom:20px;">
+      <strong>Observability Stack</strong>
+      MRx uses <strong>Grafana</strong> for unified dashboards and <strong>Azure Monitor</strong> for infrastructure-level metrics and log analytics — providing a complete view of platform health from cluster uptime through to data pipeline SLA compliance.
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-orange">📈</div><div class="card-title">Grafana Dashboards</div></div>
+        <p class="card-desc" style="margin-bottom:10px;">Unified monitoring dashboards with role-based access — all dashboards version-controlled as JSON in Git:</p>
+        <ul class="styled-list">
+          <li><strong>Pipeline Health:</strong> cluster uptime, job success rate, API latency, storage capacity</li>
+          <li><strong>Pipeline SLA:</strong> per-pipeline compliance (target latency vs actual)</li>
+          <li><strong>Data Quality:</strong> DQ rule pass/fail rates, anomaly trends over time</li>
+          <li><strong>Cost Dashboard:</strong> DBU consumption, Azure spend, cost-per-pipeline</li>
+          <li><strong>Security Dashboard:</strong> alert trend, open findings by severity, posture score</li>
+          <li><strong>Incident Dashboard:</strong> open incidents by priority, MTTR trends</li>
+        </ul>
+        <div class="tags"><span class="tag tag-orange">Grafana</span><span class="tag tag-teal">GitOps</span><span class="tag tag-blue">RBAC Access</span></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-blue">☁️</div><div class="card-title">Azure Monitor</div></div>
+        <ul class="styled-list">
+          <li>Infrastructure-level monitoring: ADF pipeline runs, Databricks job metrics, storage latency, network throughput, VM health</li>
+          <li><strong>Log Analytics Workspace:</strong> centralised log aggregation — unified KQL query interface across Databricks, ADF, storage, and application logs</li>
+          <li><strong>Alert rules:</strong> tiered alerts — pipeline failure, SLA breach, cost threshold, security anomaly</li>
+          <li>Routed to Slack, email, and PagerDuty by severity</li>
+          <li><strong>Application Insights:</strong> APM for REST APIs deployed alongside pipelines</li>
+          <li>Custom metrics published from Databricks jobs via Azure Monitor REST API</li>
+        </ul>
+        <div class="tags"><span class="tag tag-blue">Azure Monitor</span><span class="tag tag-teal">Log Analytics</span><span class="tag tag-green">KQL</span></div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:20px;">
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-teal">📏</div><div class="card-title">Platform Health Score &amp; Key SLOs</div></div>
+        <p class="card-desc" style="margin-bottom:10px;">Platform Health Score calculated daily: <em>pipeline reliability + DQ pass rate + SLA attainment + cost adherence = overall score.</em></p>
+        <div class="kpi-table-wrap">
+          <table class="data-table" style="font-size:13px;">
+            <thead><tr><th>Metric</th><th>Target</th><th>Tool</th></tr></thead>
+            <tbody>
+              <tr><td>Pipeline Success Rate</td><td>≥ 99.5%</td><td>Grafana</td></tr>
+              <tr><td>Data Quality Score</td><td>≥ 95%</td><td>Grafana + DQ Framework</td></tr>
+              <tr><td>SLA Attainment</td><td>≥ 99%</td><td>Azure Monitor</td></tr>
+              <tr><td>Mean Time to Detect (MTTD)</td><td>&lt; 5 min</td><td>PagerDuty + Grafana</td></tr>
+              <tr><td>Cost Variance</td><td>&lt; ±10% budget</td><td>Azure Cost Mgmt</td></tr>
+              <tr><td>Workspace Availability</td><td>≥ 99.9%</td><td>Azure Monitor</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-icon icon-green">📡</div><div class="card-title">Distributed Tracing &amp; Health Scorecards</div></div>
+        <ul class="styled-list">
+          <li><strong>Azure Application Insights</strong> for cross-service tracing — correlation IDs propagated through all pipeline hops for end-to-end visibility</li>
+          <li>ADF pipeline run lineage correlated with Databricks job execution via shared correlation ID</li>
+          <li>Health scorecards published to leadership SharePoint dashboard weekly</li>
+          <li>SLA breach events trigger auto-escalation to on-call engineer via PagerDuty</li>
+          <li>Error budget tracking: remaining error budget surfaced in Grafana SLO dashboards</li>
+        </ul>
+        <div class="tags"><span class="tag tag-green">App Insights</span><span class="tag tag-blue">Tracing</span><span class="tag tag-orange">SLO Budget</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><div class="card-icon icon-purple">🔔</div><div class="card-title">Alert Tiers &amp; Log Retention Policy</div></div>
+      <div class="grid-2" style="margin-top:12px;gap:16px;">
+        <table class="data-table" style="font-size:13px;">
+          <thead><tr><th>Alert Tier</th><th>Trigger</th><th>Route</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tag tag-red">P1 Critical</span></td><td>Pipeline down &gt;15 min</td><td>PagerDuty page</td></tr>
+            <tr><td><span class="tag tag-orange">P2 High</span></td><td>DQ failure, SLA breach</td><td>Team lead + Slack</td></tr>
+            <tr><td><span class="tag tag-blue">P3 Medium</span></td><td>Latency breach, cost threshold</td><td>Email + Slack</td></tr>
+            <tr><td><span class="tag tag-gray">P4 Warning</span></td><td>Informational anomaly</td><td>Slack channel only</td></tr>
+          </tbody>
+        </table>
+        <table class="data-table" style="font-size:13px;">
+          <thead><tr><th>Log Category</th><th>Retention</th><th>Tier</th></tr></thead>
+          <tbody>
+            <tr><td>Audit logs (SOX)</td><td>7 years</td><td>Hot → Cold</td></tr>
+            <tr><td>DQ logs</td><td>365 days</td><td>Hot → Cool</td></tr>
+            <tr><td>Exception logs</td><td>180 days</td><td>Hot → Cool</td></tr>
+            <tr><td>Operational logs</td><td>90 days</td><td>Hot → Archive</td></tr>
+            <tr><td>Pipeline run logs</td><td>30 days</td><td>Hot</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div><strong>MRx Nexus</strong> &nbsp;·&nbsp; Data &amp; AI Center of Excellence &nbsp;·&nbsp; Enterprise Standards v1.0 &nbsp;·&nbsp; March 2026</div>
+  <div>MomentimRx &nbsp;|&nbsp; © 2025 McKesson Corporation &nbsp;|&nbsp; McKesson Proprietary and Confidential</div>
+</footer>
+
+<script>
+var sections = document.querySelectorAll('.section-anchor');
+var tabs = document.querySelectorAll('.page-tab');
+window.addEventListener('scroll', function() {
+  var scrollPos = window.scrollY + 140;
+  sections.forEach(function(s) {
+    if (s.offsetTop <= scrollPos && s.offsetTop + s.offsetHeight > scrollPos) {
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      var at = document.querySelector('.page-tab[href="#'+s.getAttribute('id')+'"]');
+      if (at) at.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
